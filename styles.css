@@ -59,3 +59,26 @@ header p {
     color: var(--text-muted);
     font-size: 1.125rem;
 }
+
+.generator-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 2rem;
+    align-items: start;
+}
+
+.glass {
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    box-shadow: var(--glass-shadow);
+    padding: 2rem;
+}
+
+@media (max-width: 900px) {
+    .generator-grid {
+        grid-template-columns: 1fr;
+    }
+}
