@@ -15,7 +15,28 @@
             </header>
             
             <div class="generator-grid">
-                <!-- Form and Preview will go here -->
+                <section class="form-section glass">
+                    <form id="qr-form">
+                        <div class="input-group">
+                            <label for="url">Content</label>
+                            <input type="text" id="url" placeholder="https://example.com" autocomplete="off">
+                        </div>
+                        
+                        <div class="options-grid">
+                            <!-- Customization options will be added here -->
+                        </div>
+
+                        <button type="submit" class="generate-btn">
+                            Generate QR Code
+                        </button>
+                    </form>
+                </section>
+
+                <section class="preview-section glass">
+                    <div id="qr-preview">
+                        <!-- QR Code will be rendered here -->
+                    </div>
+                </section>
             </div>
         </div>
     </main>
