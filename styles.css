@@ -194,3 +194,36 @@ select:focus {
     height: auto !important;
     border-radius: 1rem;
 }
+
+.download-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.action-btn {
+    padding: 0.875rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--primary);
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-btn.secondary {
+    background: transparent;
+    border-color: var(--glass-border);
+    color: var(--text);
+}
+
+.action-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+.action-btn.secondary:hover {
+    background: var(--glass-border);
+}
