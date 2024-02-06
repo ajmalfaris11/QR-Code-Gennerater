@@ -6,10 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgColorInput = document.getElementById('bg-color');
     const dotStyleInput = document.getElementById('dot-style');
     const cornerStyleInput = document.getElementById('corner-style');
+    const downloadPng = document.getElementById('download-png');
+    const downloadSvg = document.getElementById('download-svg');
 
     const qrCode = new QRCodeStyling({
-        width: 300,
-        height: 300,
+        width: 1000,
+        height: 1000,
         type: "svg",
         data: "https://github.com/ajmalfaris11",
         dotsOptions: {
@@ -54,5 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Real-time preview
     [dotColorInput, bgColorInput, dotStyleInput, cornerStyleInput].forEach(input => {
         input.addEventListener('change', updateQR);
+    });
+
+    downloadPng.addEventListener('click', () => {
+        qrCode.download({ name: "qr-aura", extension: "png" });
+    });
+
+    downloadSvg.addEventListener('click', () => {
+        qrCode.download({ name: "qr-aura", extension: "svg" });
     });
 });
