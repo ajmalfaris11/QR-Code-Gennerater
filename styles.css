@@ -241,3 +241,15 @@ select:focus {
 header { animation-delay: 0.1s; }
 .form-section { animation-delay: 0.2s; }
 .preview-section { animation-delay: 0.3s; }
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    .container {
+        padding: 1rem;
+    }
+    .glass {
+        padding: 1.5rem;
+    }
+}
