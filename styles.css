@@ -144,6 +144,40 @@ input[type="text"]:focus {
     margin-bottom: 1.5rem;
 }
 
+.full-width {
+    grid-column: span 2;
+}
+
+.file-input-wrapper {
+    position: relative;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px dashed var(--glass-border);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.file-input-wrapper:hover {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.file-input-wrapper input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-name {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+
 .color-input-wrapper {
     height: 3rem;
     width: 100%;
