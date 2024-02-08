@@ -6,8 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgColorInput = document.getElementById('bg-color');
     const dotStyleInput = document.getElementById('dot-style');
     const cornerStyleInput = document.getElementById('corner-style');
+    const logoUpload = document.getElementById('logo-upload');
     const downloadPng = document.getElementById('download-png');
     const downloadSvg = document.getElementById('download-svg');
+
+    let currentLogo = null;
 
     const qrCode = new QRCodeStyling({
         width: 1000,
@@ -44,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             cornersSquareOptions: {
                 type: cornerStyleInput.value
-            }
+            },
+            image: currentLogo
         });
     };
 
@@ -56,6 +60,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Real-time preview
     [dotColorInput, bgColorInput, dotStyleInput, cornerStyleInput].forEach(input => {
         input.addEventListener('change', updateQR);
+    });
+
+    logoUpload.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                currentLogo = event.target.result;
+                updateQR();
+            };
+            reader.readAsDataURL(file);
+        }
     });
 
     downloadPng.addEventListener('click', () => {
