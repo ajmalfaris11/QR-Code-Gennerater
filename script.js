@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const qrPreview = document.getElementById('qr-preview');
     const urlInput = document.getElementById('url');
     const dotColorInput = document.getElementById('dot-color');
+    const dotColor2Input = document.getElementById('dot-color-2');
+    const gradientTypeInput = document.getElementById('gradient-type');
     const bgColorInput = document.getElementById('bg-color');
     const dotStyleInput = document.getElementById('dot-style');
     const cornerStyleInput = document.getElementById('corner-style');
@@ -36,12 +38,28 @@ document.addEventListener('DOMContentLoaded', () => {
     qrCode.append(qrPreview);
 
     const updateQR = () => {
+        const gradientType = gradientTypeInput.value;
+        const dotsOptions = {
+            type: dotStyleInput.value
+        };
+
+        if (gradientType === 'none') {
+            dotsOptions.color = dotColorInput.value;
+            dotsOptions.gradient = null;
+        } else {
+            dotsOptions.gradient = {
+                type: gradientType,
+                rotation: 0,
+                colorStops: [
+                    { offset: 0, color: dotColorInput.value },
+                    { offset: 1, color: dotColor2Input.value }
+                ]
+            };
+        }
+
         qrCode.update({
             data: urlInput.value || "https://github.com/ajmalfaris11",
-            dotsOptions: {
-                color: dotColorInput.value,
-                type: dotStyleInput.value
-            },
+            dotsOptions: dotsOptions,
             backgroundOptions: {
                 color: bgColorInput.value,
             },
@@ -58,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Real-time preview
-    [dotColorInput, bgColorInput, dotStyleInput, cornerStyleInput].forEach(input => {
+    [dotColorInput, dotColor2Input, gradientTypeInput, bgColorInput, dotStyleInput, cornerStyleInput].forEach(input => {
         input.addEventListener('change', updateQR);
     });
 
