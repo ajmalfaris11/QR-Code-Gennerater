@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoUpload = document.getElementById('logo-upload');
     const downloadPng = document.getElementById('download-png');
     const downloadSvg = document.getElementById('download-svg');
+    const presetBtns = document.querySelectorAll('.preset-btn');
 
     let currentLogo = null;
 
@@ -70,6 +71,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    const applyPreset = (preset) => {
+        const themes = {
+            neon: {
+                dot1: "#00f2ff", dot2: "#bc00ff", grad: "linear", bg: "#000000", dotStyle: "dots", corner: "dot"
+            },
+            corporate: {
+                dot1: "#1e3a8a", dot2: "#3b82f6", grad: "linear", bg: "#ffffff", dotStyle: "square", corner: "square"
+            },
+            minimal: {
+                dot1: "#ffffff", dot2: "#94a3b8", grad: "none", bg: "#0f172a", dotStyle: "rounded", corner: "extra-rounded"
+            },
+            gold: {
+                dot1: "#fbbf24", dot2: "#d97706", grad: "radial", bg: "#1a1a1a", dotStyle: "classy", corner: "extra-rounded"
+            }
+        };
+
+        const theme = themes[preset];
+        if (theme) {
+            dotColorInput.value = theme.dot1;
+            dotColor2Input.value = theme.dot2;
+            gradientTypeInput.value = theme.grad;
+            bgColorInput.value = theme.bg;
+            dotStyleInput.value = theme.dotStyle;
+            cornerStyleInput.value = theme.corner;
+            updateQR();
+        }
+    };
+
     qrForm.addEventListener('submit', (e) => {
         e.preventDefault();
         updateQR();
@@ -78,6 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Real-time preview
     [dotColorInput, dotColor2Input, gradientTypeInput, bgColorInput, dotStyleInput, cornerStyleInput].forEach(input => {
         input.addEventListener('change', updateQR);
+    });
+
+    presetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            presetBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applyPreset(btn.dataset.preset);
+        });
     });
 
     logoUpload.addEventListener('change', (e) => {
