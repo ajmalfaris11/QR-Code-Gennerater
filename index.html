@@ -1,13 +1,123 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>qr-code-gennerator</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Aura | Premium QR Code Generator</title>
+    <meta name="description" content="Generate high-quality, customized QR codes for free. Support for PNG, SVG, custom colors, and unique shapes.">
+    <meta name="keywords" content="QR Code Generator, Custom QR Code, Premium QR, PNG QR, SVG QR">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main id="app">
+        <div class="container">
+            <header>
+                <h1>QR <span class="gradient-text">Aura</span></h1>
+                <p>Generate premium, customized QR codes in seconds.</p>
+            </header>
+
+            <div class="presets-container">
+                <button class="preset-btn" data-preset="neon">Neon Night</button>
+                <button class="preset-btn" data-preset="corporate">Corporate Blue</button>
+                <button class="preset-btn" data-preset="minimal">Minimal Dark</button>
+                <button class="preset-btn" data-preset="gold">Royal Gold</button>
+            </div>
+            
+            <div class="generator-grid">
+                <section class="form-section glass">
+                    <form id="qr-form">
+                        <div class="input-group">
+                            <label for="url">Content</label>
+                            <input type="text" id="url" placeholder="https://example.com" autocomplete="off">
+                        </div>
+                        
+                        <div class="options-grid">
+                            <div class="input-group">
+                                <label for="dot-color">Primary Color</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="dot-color" value="#6366f1">
+                                </div>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="dot-color-2">Secondary Color</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="dot-color-2" value="#ec4899">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="gradient-type">Gradient Type</label>
+                                <select id="gradient-type">
+                                    <option value="none">None (Solid)</option>
+                                    <option value="linear">Linear</option>
+                                    <option value="radial">Radial</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-group">
+                                <label for="bg-color">Background</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="bg-color" value="#ffffff">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="dot-style">Dot Style</label>
+                                <select id="dot-style">
+                                    <option value="rounded">Rounded</option>
+                                    <option value="dots">Dots</option>
+                                    <option value="classy">Classy</option>
+                                    <option value="square">Square</option>
+                                    <option value="extra-rounded">Extra Rounded</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="corner-style">Corner Style</label>
+                                <select id="corner-style">
+                                    <option value="square">Square</option>
+                                    <option value="extra-rounded">Extra Rounded</option>
+                                    <option value="dot">Dot</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group full-width">
+                                <label for="logo-upload">Center Logo</label>
+                                <div class="file-input-wrapper">
+                                    <input type="file" id="logo-upload" accept="image/*">
+                                    <span class="file-name">Optional: Upload Image</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="generate-btn">
+                            Generate QR Code
+                        </button>
+                    </form>
+                </section>
+
+                <section class="preview-section glass">
+                    <div id="qr-preview">
+                        <!-- QR Code will be rendered here -->
+                    </div>
+                    
+                    <div class="download-actions">
+                        <button type="button" id="download-png" class="action-btn">
+                            Download PNG
+                        </button>
+                        <button type="button" id="download-svg" class="action-btn secondary">
+                            Download SVG
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
