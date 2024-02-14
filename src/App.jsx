@@ -1,121 +1,124 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React, { useState } from 'react';
+import Header from './components/Header';
+import Presets from './components/Presets';
+import { useQRCode } from './hooks/useQRCode';
+import './styles/Generator.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+    const [options, setOptions] = useState({
+        width: 300,
+        height: 300,
+        data: 'https://github.com/ajmalfaris11',
+        dotsOptions: { color: '#6366f1', type: 'rounded' },
+        backgroundOptions: { color: '#ffffff' },
+        cornersSquareOptions: { type: 'extra-rounded' },
+        image: null,
+    });
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    const [activePreset, setActivePreset] = useState(null);
+
+    const { qrRef, download } = useQRCode({
+        ...options,
+        width: 1000,
+        height: 1000,
+    });
+
+    const handleChange = (key, value) => {
+        setOptions(prev => ({ ...prev, [key]: value }));
+    };
+
+    const handleDotChange = (key, value) => {
+        setOptions(prev => ({
+            ...prev,
+            dotsOptions: { ...prev.dotsOptions, [key]: value }
+        }));
+    };
+
+    const applyPreset = (preset) => {
+        const themes = {
+            neon: {
+                dotsOptions: { color: '#00f2ff', type: 'dots' },
+                backgroundOptions: { color: '#000000' },
+                cornersSquareOptions: { type: 'dot' }
+            },
+            corporate: {
+                dotsOptions: { color: '#1e3a8a', type: 'square' },
+                backgroundOptions: { color: '#ffffff' },
+                cornersSquareOptions: { type: 'square' }
+            },
+            minimal: {
+                dotsOptions: { color: '#ffffff', type: 'rounded' },
+                backgroundOptions: { color: '#0f172a' },
+                cornersSquareOptions: { type: 'extra-rounded' }
+            },
+            gold: {
+                dotsOptions: { color: '#fbbf24', type: 'classy' },
+                backgroundOptions: { color: '#1a1a1a' },
+                cornersSquareOptions: { type: 'extra-rounded' }
+            }
+        };
+        const theme = themes[preset];
+        if (theme) {
+            setOptions(prev => ({ ...prev, ...theme }));
+            setActivePreset(preset);
+        }
+    };
+
+    return (
+        <div className="container" style={{ width: '100%', maxWidth: '1000px', padding: '2rem' }}>
+            <Header />
+            <Presets activePreset={activePreset} onSelect={applyPreset} />
+            
+            <div className="generator-grid">
+                <section className="form-section glass fade-in" style={{ animationDelay: '0.2s' }}>
+                    <div className="input-group">
+                        <label>Content</label>
+                        <input 
+                            type="text" 
+                            value={options.data} 
+                            onChange={(e) => handleChange('data', e.target.value)}
+                            placeholder="https://example.com"
+                        />
+                    </div>
+
+                    <div className="options-grid">
+                        <div className="input-group">
+                            <label>Color</label>
+                            <div className="color-input-wrapper">
+                                <input 
+                                    type="color" 
+                                    value={options.dotsOptions.color}
+                                    onChange={(e) => handleDotChange('color', e.target.value)}
+                                />
+                            </div>
+                        </div>
+                        <div className="input-group">
+                            <label>Background</label>
+                            <div className="color-input-wrapper">
+                                <input 
+                                    type="color" 
+                                    value={options.backgroundOptions.color}
+                                    onChange={(e) => handleChange('backgroundOptions', { color: e.target.value })}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="preview-section glass fade-in" style={{ animationDelay: '0.3s' }}>
+                    <div ref={qrRef} style={{ display: 'flex', justifyContent: 'center' }}></div>
+                    <div className="download-actions" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '2rem' }}>
+                        <button onClick={() => download('png')} className="action-btn" style={{ background: 'var(--primary)', color: 'white', border: 'none', padding: '0.875rem', borderRadius: '0.75rem', cursor: 'pointer' }}>
+                            PNG
+                        </button>
+                        <button onClick={() => download('svg')} className="action-btn secondary" style={{ background: 'transparent', border: '1px solid var(--glass-border)', color: 'white', padding: '0.875rem', borderRadius: '0.75rem', cursor: 'pointer' }}>
+                            SVG
+                        </button>
+                    </div>
+                </section>
+            </div>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    );
+};
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
-}
-
-export default App
+export default App;
