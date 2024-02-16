@@ -80,14 +80,22 @@
 
 #qr-preview {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 300px;
     width: 100%;
+    gap: 1rem;
 }
 
 #qr-preview canvas, #qr-preview svg {
     max-width: 100% !important;
     height: auto !important;
     border-radius: 1rem;
+}
+
+.preview-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
