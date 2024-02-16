@@ -185,7 +185,7 @@ const App = () => {
                 </section>
 
                 <section className="preview-section glass fade-in" style={{ animationDelay: '0.3s' }}>
-                    <div ref={qrRef} style={{ display: 'flex', justifyContent: 'center' }}></div>
+                    <div id="qr-preview" ref={qrRef}></div>
                     <div className="download-actions">
                         <button onClick={() => download('png')} className="action-btn">
                             Download PNG
