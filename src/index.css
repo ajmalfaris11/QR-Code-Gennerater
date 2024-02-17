@@ -1,5 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-    /* Premium Color Palette */
     --primary: #6366f1;
     --primary-hover: #4f46e5;
     --secondary: #ec4899;
@@ -11,45 +14,19 @@
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@layer base {
+  body {
+    @apply bg-[#0f172a] text-[#f8fafc] min-h-screen font-sans;
+    background-image: theme('backgroundImage.gradient-main');
+  }
 }
 
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: var(--background);
-    background-image: 
-        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.15) 0px, transparent 50%);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-.gradient-text {
-    background: linear-gradient(to right, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.glass {
-    background: var(--surface);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    border-radius: 1.5rem;
-    box-shadow: var(--glass-shadow);
-    padding: 2rem;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-    animation: fadeIn 0.8s ease backwards;
+@layer components {
+  .glass {
+    @apply bg-surface backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-right from-primary to-secondary bg-clip-text text-transparent;
+  }
 }
