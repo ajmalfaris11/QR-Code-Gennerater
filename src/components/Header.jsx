@@ -1,11 +1,11 @@
 import React from 'react';
 
 const Header = () => (
-    <header className="fade-in" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <h1 style={{ fontSize: '3.5rem', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: '0.5rem' }}>
-            QR <span className="gradient-text">Aura</span>
+    <header className="animate-fade-in text-center mb-12">
+        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2">
+            QR <span className="bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">Aura</span>
         </h1>
-        <p style={{ color: 'var(--text-muted)', fontSize: '1.125rem' }}>
+        <p className="text-slate-400 text-lg md:text-xl">
             Generate premium, customized QR codes in seconds.
         </p>
     </header>
