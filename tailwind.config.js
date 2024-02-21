@@ -7,13 +7,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#6366f1",
-        "primary-hover": "#4f46e5",
-        secondary: "#ec4899",
-        surface: "rgba(30, 41, 59, 0.7)",
+        primary: "#ffffff",
+        "primary-hover": "#f4f4f5",
+        secondary: "#000000",
+        surface: "rgba(9, 9, 11, 0.6)",
+        zinc: {
+          950: "#09090b",
+        }
       },
       backgroundImage: {
-        'gradient-main': 'radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.15) 0px, transparent 50%)',
+        'gradient-main': 'radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.05) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(0, 0, 0, 0.4) 0px, transparent 50%)',
       },
       keyframes: {
         fadeIn: {
