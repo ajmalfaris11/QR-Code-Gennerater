@@ -3,38 +3,41 @@
 @tailwind utilities;
 
 :root {
-    --primary: #6366f1;
-    --primary-hover: #4f46e5;
-    --secondary: #ec4899;
-    --background: #0f172a;
-    --surface: rgba(30, 41, 59, 0.7);
-    --text: #f8fafc;
-    --text-muted: #94a3b8;
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --primary: #ffffff;
+    --primary-hover: #f4f4f5;
+    --secondary: #000000;
+    --background: #09090b;
+    --surface: rgba(9, 9, 11, 0.6);
+    --text: #ffffff;
+    --text-muted: #a1a1aa;
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
 }
 
 @layer base {
   body {
-    @apply bg-[#0f172a] text-[#f8fafc] min-h-screen font-sans;
-    background-image: theme('backgroundImage.gradient-main');
+    @apply bg-zinc-950 text-white min-h-screen font-sans antialiased;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.03) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(0, 0, 0, 0.8) 0px, transparent 50%);
   }
 }
 
 @layer components {
   .glass {
-    @apply bg-surface backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl;
+    @apply bg-zinc-900/60 backdrop-blur-2xl border border-white/5 rounded-[2rem] shadow-2xl;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-white via-white to-zinc-500 bg-clip-text text-transparent;
   }
 
   #qr-preview {
-    @apply flex flex-col justify-center items-center min-h-[300px] w-full gap-4;
+    @apply flex flex-col justify-center items-center min-h-[350px] w-full gap-6;
   }
 
   #qr-preview canvas, #qr-preview svg {
-    @apply max-w-full h-auto rounded-2xl shadow-xl !important;
+    @apply max-w-full h-auto rounded-3xl shadow-[0_0_50px_-12px_rgba(255,255,255,0.1)] !important;
   }
 }
