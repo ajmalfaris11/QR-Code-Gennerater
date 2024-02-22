@@ -9,7 +9,7 @@ const App = () => {
         height: 300,
         data: 'https://github.com/ajmalfaris11',
         dotsOptions: { 
-            color: '#6366f1', 
+            color: '#ffffff', 
             type: 'rounded',
             gradient: null
         },
@@ -19,7 +19,7 @@ const App = () => {
     });
 
     const [gradType, setGradType] = useState('none');
-    const [gradColor2, setGradColor2] = useState('#ec4899');
+    const [gradColor2, setGradColor2] = useState('#a1a1aa');
     const [activePreset, setActivePreset] = useState(null);
 
     const { qrRef, download } = useQRCode({
@@ -72,28 +72,28 @@ const App = () => {
         const themes = {
             neon: {
                 dotsOptions: { 
-                    gradient: { type: 'linear', rotation: 0, colorStops: [{offset:0, color:'#00f2ff'}, {offset:1, color:'#bc00ff'}] },
+                    gradient: { type: 'linear', rotation: 0, colorStops: [{offset:0, color:'#ffffff'}, {offset:1, color:'#3f3f46'}] },
                     type: 'dots' 
                 },
                 backgroundOptions: { color: '#000000' },
                 cornersSquareOptions: { type: 'dot' }
             },
             corporate: {
-                dotsOptions: { color: '#1e3a8a', type: 'square', gradient: null },
-                backgroundOptions: { color: '#ffffff' },
+                dotsOptions: { color: '#ffffff', type: 'square', gradient: null },
+                backgroundOptions: { color: '#000000' },
                 cornersSquareOptions: { type: 'square' }
             },
             minimal: {
                 dotsOptions: { color: '#ffffff', type: 'rounded', gradient: null },
-                backgroundOptions: { color: '#0f172a' },
+                backgroundOptions: { color: '#09090b' },
                 cornersSquareOptions: { type: 'extra-rounded' }
             },
             gold: {
                 dotsOptions: { 
-                    gradient: { type: 'radial', rotation: 0, colorStops: [{offset:0, color:'#fbbf24'}, {offset:1, color:'#d97706'}] },
+                    gradient: { type: 'radial', rotation: 0, colorStops: [{offset:0, color:'#ffffff'}, {offset:1, color:'#71717a'}] },
                     type: 'classy' 
                 },
-                backgroundOptions: { color: '#1a1a1a' },
+                backgroundOptions: { color: '#09090b' },
                 cornersSquareOptions: { type: 'extra-rounded' }
             }
         };
@@ -105,41 +105,41 @@ const App = () => {
     };
 
     return (
-        <div className="max-w-5xl mx-auto px-6 py-12 min-h-screen">
+        <div className="max-w-6xl mx-auto px-8 py-20 min-h-screen selection:bg-white selection:text-black">
             <Header />
             <Presets activePreset={activePreset} onSelect={applyPreset} />
             
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr,400px] gap-8 items-start">
-                <section className="glass p-8 animate-fade-in [animation-delay:200ms]">
-                    <div className="flex flex-col gap-2 mb-6">
-                        <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Content</label>
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr,450px] gap-12 items-start">
+                <section className="glass p-10 animate-fade-in [animation-delay:200ms]">
+                    <div className="flex flex-col gap-3 mb-8">
+                        <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">Data Content</label>
                         <input 
                             type="text" 
-                            className="bg-slate-900/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                            className="bg-zinc-950/50 border border-white/5 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-white/20 focus:ring-1 focus:ring-white/10 transition-all font-medium placeholder:text-zinc-700"
                             value={options.data} 
                             onChange={(e) => handleChange('data', e.target.value)}
-                            placeholder="https://example.com"
+                            placeholder="https://ajmalfaris.dev"
                         />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-6 mb-6">
-                        <div className="flex flex-col gap-2">
-                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Primary Color</label>
-                            <div className="h-12 w-full rounded-xl overflow-hidden border border-white/10 hover:border-indigo-500 focus-within:ring-4 focus-within:ring-indigo-500/20 transition-all">
+                    <div className="grid grid-cols-2 gap-8 mb-8">
+                        <div className="flex flex-col gap-3">
+                            <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">Primary Color</label>
+                            <div className="h-14 w-full rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all cursor-pointer group">
                                 <input 
                                     type="color" 
-                                    className="w-[120%] h-[120%] -m-[10%] cursor-pointer bg-none border-none p-0"
-                                    value={options.dotsOptions.color || '#6366f1'}
+                                    className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.5] group-hover:grayscale-0 transition-all"
+                                    value={options.dotsOptions.color || '#ffffff'}
                                     onChange={(e) => updateGradient(gradType, e.target.value, gradColor2)}
                                 />
                             </div>
                         </div>
-                        <div className="flex flex-col gap-2">
-                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Secondary Color</label>
-                            <div className="h-12 w-full rounded-xl overflow-hidden border border-white/10 hover:border-indigo-500 focus-within:ring-4 focus-within:ring-indigo-500/20 transition-all">
+                        <div className="flex flex-col gap-3">
+                            <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">Secondary Color</label>
+                            <div className="h-14 w-full rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all cursor-pointer group">
                                 <input 
                                     type="color" 
-                                    className="w-[120%] h-[120%] -m-[10%] cursor-pointer bg-none border-none p-0"
+                                    className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.5] group-hover:grayscale-0 transition-all"
                                     value={gradColor2}
                                     onChange={(e) => {
                                         setGradColor2(e.target.value);
@@ -148,51 +148,51 @@ const App = () => {
                                 />
                             </div>
                         </div>
-                        <div className="flex flex-col gap-2">
-                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Gradient Type</label>
+                        <div className="flex flex-col gap-3">
+                            <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">Gradient Style</label>
                             <select 
-                                className="bg-slate-900/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition-all appearance-none cursor-pointer"
+                                className="bg-zinc-950/50 border border-white/5 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-white/20 transition-all appearance-none cursor-pointer font-bold text-xs tracking-widest"
                                 value={gradType} 
                                 onChange={(e) => {
                                     setGradType(e.target.value);
                                     updateGradient(e.target.value, options.dotsOptions.color, gradColor2);
                                 }}>
-                                <option value="none">None</option>
-                                <option value="linear">Linear</option>
-                                <option value="radial">Radial</option>
+                                <option value="none">SOLID</option>
+                                <option value="linear">LINEAR</option>
+                                <option value="radial">RADIAL</option>
                             </select>
                         </div>
-                        <div className="flex flex-col gap-2">
-                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Background</label>
-                            <div className="h-12 w-full rounded-xl overflow-hidden border border-white/10 hover:border-indigo-500 focus-within:ring-4 focus-within:ring-indigo-500/20 transition-all">
+                        <div className="flex flex-col gap-3">
+                            <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">Background</label>
+                            <div className="h-14 w-full rounded-2xl overflow-hidden border border-white/5 hover:border-white/20 transition-all cursor-pointer group">
                                 <input 
                                     type="color" 
-                                    className="w-[120%] h-[120%] -m-[10%] cursor-pointer bg-none border-none p-0"
+                                    className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0"
                                     value={options.backgroundOptions.color}
                                     onChange={(e) => handleChange('backgroundOptions', { color: e.target.value })}
                                 />
                             </div>
                         </div>
-                        <div className="col-span-2 flex flex-col gap-2">
-                            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Center Logo</label>
-                            <div className="relative bg-slate-900/50 border border-dashed border-white/20 rounded-xl p-4 flex items-center justify-center hover:border-indigo-500 hover:bg-indigo-500/5 transition-all cursor-pointer">
+                        <div className="col-span-2 flex flex-col gap-3">
+                            <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">Branding Logo</label>
+                            <div className="relative bg-zinc-950/50 border border-dashed border-white/10 rounded-2xl p-6 flex items-center justify-center hover:border-white/30 hover:bg-white/[0.02] transition-all cursor-pointer group">
                                 <input type="file" className="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" onChange={handleLogoUpload} />
-                                <span className="text-sm text-slate-400 font-medium">
-                                    {options.image ? '✓ Logo Uploaded' : 'Drop image or click to upload'}
+                                <span className="text-[10px] text-zinc-500 font-black uppercase tracking-widest group-hover:text-white transition-colors">
+                                    {options.image ? '✓ LOGO ATTACHED' : 'UPLOAD BRAND ASSET'}
                                 </span>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <section className="glass p-8 flex flex-col gap-8 animate-fade-in [animation-delay:300ms]">
-                    <div className="flex justify-center items-center min-h-[300px] w-full" ref={qrRef} id="qr-preview"></div>
-                    <div className="grid grid-cols-2 gap-4">
-                        <button onClick={() => download('png')} className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition-all hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-indigo-500/20">
-                            Download PNG
+                <section className="glass p-10 flex flex-col gap-10 animate-fade-in [animation-delay:300ms]">
+                    <div className="flex justify-center items-center min-h-[350px] w-full" ref={qrRef} id="qr-preview"></div>
+                    <div className="grid grid-cols-1 gap-4">
+                        <button onClick={() => download('png')} className="bg-white hover:bg-zinc-200 text-black font-black text-[10px] tracking-[0.3em] py-5 rounded-2xl transition-all hover:-translate-y-1 active:translate-y-0 shadow-[0_20px_40px_-15px_rgba(255,255,255,0.2)]">
+                            EXPORT PNG
                         </button>
-                        <button onClick={() => download('svg')} className="bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl transition-all border border-white/10 hover:border-white/20 hover:-translate-y-0.5 active:translate-y-0">
-                            Download SVG
+                        <button onClick={() => download('svg')} className="bg-transparent hover:bg-white/5 text-white font-black text-[10px] tracking-[0.3em] py-5 rounded-2xl transition-all border border-white/10 hover:border-white/20">
+                            EXPORT SVG
                         </button>
                     </div>
                 </section>
