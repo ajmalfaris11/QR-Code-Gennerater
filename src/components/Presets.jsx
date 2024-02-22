@@ -1,21 +1,21 @@
 import React from 'react';
 
 const themes = [
-    { id: 'neon', label: 'Neon Night' },
-    { id: 'corporate', label: 'Corporate Blue' },
-    { id: 'minimal', label: 'Minimal Dark' },
-    { id: 'gold', label: 'Royal Gold' },
+    { id: 'neon', label: 'NEON' },
+    { id: 'corporate', label: 'CORPORATE' },
+    { id: 'minimal', label: 'MINIMAL' },
+    { id: 'gold', label: 'ROYAL' },
 ];
 
 const Presets = ({ activePreset, onSelect }) => (
-    <div className="flex justify-center gap-3 mb-10 flex-wrap animate-fade-in [animation-delay:100ms]">
+    <div className="flex justify-center gap-4 mb-12 flex-wrap animate-fade-in [animation-delay:100ms]">
         {themes.map((theme) => (
             <button
                 key={theme.id}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 border ${
+                className={`px-8 py-2.5 rounded-full text-xs font-bold tracking-widest transition-all duration-300 border ${
                     activePreset === theme.id 
-                    ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg shadow-indigo-500/30' 
-                    : 'bg-slate-800/50 border-white/10 text-slate-400 hover:border-indigo-500 hover:text-white hover:-translate-y-0.5'
+                    ? 'bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.3)]' 
+                    : 'bg-zinc-900/40 border-white/5 text-zinc-500 hover:border-white/20 hover:text-white'
                 }`}
                 onClick={() => onSelect(theme.id)}
             >
