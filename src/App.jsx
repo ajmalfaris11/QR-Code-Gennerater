@@ -129,10 +129,11 @@ const App = () => {
     };
 
     return (
-        <div className="max-w-6xl mx-auto px-8 py-20 min-h-screen selection:bg-zinc-950 dark:selection:bg-white selection:text-white dark:selection:text-black transition-colors duration-500">
-            <ThemeToggle isDark={isDark} onToggle={() => setIsDark(!isDark)} />
-            <Header />
-            <Presets activePreset={activePreset} onSelect={applyPreset} />
+        <div className="min-h-screen w-full bg-zinc-50 dark:bg-zinc-950 transition-colors duration-500 selection:bg-zinc-950 dark:selection:bg-white selection:text-white dark:selection:text-black">
+            <div className="max-w-6xl mx-auto px-8 py-20">
+                <ThemeToggle isDark={isDark} onToggle={() => setIsDark(!isDark)} />
+                <Header />
+                <Presets activePreset={activePreset} onSelect={applyPreset} />
             
             <div className="grid grid-cols-1 lg:grid-cols-[1fr,450px] gap-12 items-start">
                 <section className="glass p-10 animate-fade-in [animation-delay:200ms]">
@@ -221,6 +222,7 @@ const App = () => {
                         </button>
                     </div>
                 </section>
+            </div>
             </div>
         </div>
     );
