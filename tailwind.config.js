@@ -9,24 +9,26 @@ export default {
     extend: {
       colors: {
         primary: "#ffffff",
-        "primary-hover": "#f4f4f5",
         secondary: "#000000",
-        surface: "rgba(9, 9, 11, 0.6)",
         zinc: {
           950: "#09090b",
+        },
+        apple: {
+          light: "rgba(255, 255, 255, 0.8)",
+          dark: "rgba(22, 22, 23, 0.8)",
+          border: "rgba(255, 255, 255, 0.12)",
+          borderLight: "rgba(0, 0, 0, 0.12)",
         }
       },
       backgroundImage: {
-        'gradient-main': 'radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.05) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(0, 0, 0, 0.4) 0px, transparent 50%)',
+        'gradient-apple': 'radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.08) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(0, 0, 0, 0.8) 0px, transparent 50%)',
       },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        }
+      backdropBlur: {
+        '3xl': '64px',
       },
-      animation: {
-        'fade-in': 'fadeIn 0.8s ease forwards',
+      borderRadius: {
+        '4xl': '2rem',
+        '5xl': '2.5rem',
       }
     },
   },
