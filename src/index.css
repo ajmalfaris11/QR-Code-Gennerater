@@ -22,7 +22,7 @@
 
 @layer components {
   .glass {
-    @apply bg-white/70 dark:bg-zinc-900/60 backdrop-blur-3xl border border-black/[0.08] dark:border-white/[0.08] rounded-5xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_40px_100px_rgba(0,0,0,0.6)] transition-all duration-700;
+    @apply bg-white/70 dark:bg-zinc-900/60 backdrop-blur-3xl border border-black/[0.08] dark:border-white/[0.08] rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_40px_100px_rgba(0,0,0,0.6)] transition-all duration-700;
   }
   
   .gradient-text {
@@ -34,6 +34,6 @@
   }
 
   #qr-preview canvas, #qr-preview svg {
-    @apply max-w-full h-auto rounded-4xl shadow-2xl dark:shadow-[0_0_80px_-20px_rgba(255,255,255,0.15)] transition-all duration-1000 !important;
+    @apply max-w-full h-auto rounded-[2rem] shadow-2xl dark:shadow-[0_0_80px_-20px_rgba(255,255,255,0.15)] transition-all duration-1000 !important;
   }
 }
