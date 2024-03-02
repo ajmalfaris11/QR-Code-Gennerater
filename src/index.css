@@ -3,28 +3,38 @@
 @tailwind utilities;
 
 :root {
-    --apple-bg-light: #f5f5f7;
-    --apple-bg-dark: #000000;
+    --bg-light: #ffffff;
+    --bg-dark: #000000;
+    --grid-color: rgba(255, 255, 255, 0.03);
+    --grid-color-light: rgba(0, 0, 0, 0.03);
 }
 
 @layer base {
   body {
-    @apply bg-[var(--apple-bg-light)] dark:bg-[var(--apple-bg-dark)] text-zinc-950 dark:text-white min-h-screen font-sans antialiased transition-colors duration-1000;
-    background-attachment: fixed;
+    @apply bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-zinc-950 dark:text-white min-h-screen font-sans antialiased transition-colors duration-1000;
+    background-image: 
+        linear-gradient(var(--grid-color-light) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color-light) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
   
   .dark body {
     background-image: 
-        radial-gradient(at 0% 0%, rgba(255, 255, 255, 0.05) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(0, 0, 0, 0.8) 0px, transparent 50%);
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 }
 
 @layer components {
   .glass {
-    @apply bg-white/70 dark:bg-zinc-900/60 backdrop-blur-3xl border border-black/[0.08] dark:border-white/[0.08] rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_40px_100px_rgba(0,0,0,0.6)] transition-all duration-700;
+    @apply bg-white/90 dark:bg-[#0a0a0a]/80 backdrop-blur-3xl border border-black/[0.05] dark:border-white/[0.05] rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-[0_40px_100px_rgba(0,0,0,0.8)] transition-all duration-700;
   }
   
+  .glass-card {
+    @apply bg-zinc-50/50 dark:bg-zinc-900/40 backdrop-blur-2xl border border-black/[0.03] dark:border-white/[0.03] rounded-3xl transition-all duration-500;
+  }
+
   .gradient-text {
     @apply bg-gradient-to-br from-zinc-950 via-zinc-800 to-zinc-600 dark:from-white dark:via-zinc-200 dark:to-zinc-500 bg-clip-text text-transparent transition-all duration-1000;
   }
@@ -35,5 +45,9 @@
 
   #qr-preview canvas, #qr-preview svg {
     @apply max-w-full h-auto rounded-[2rem] shadow-2xl dark:shadow-[0_0_80px_-20px_rgba(255,255,255,0.15)] transition-all duration-1000 !important;
+  }
+
+  .sparkle {
+    @apply absolute pointer-events-none text-white/20 dark:text-white/40 animate-pulse;
   }
 }

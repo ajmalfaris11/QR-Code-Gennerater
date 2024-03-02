@@ -1,12 +1,27 @@
 import React from 'react';
 
 const Header = () => (
-    <header className="animate-fade-in text-center mb-16">
-        <h1 className="text-6xl md:text-7xl font-black tracking-tighter mb-4">
+    <header className="animate-fade-in text-center mb-20 relative">
+        <div className="sparkle top-0 left-1/4 scale-150">
+            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+            </svg>
+        </div>
+        <div className="sparkle bottom-0 right-1/4 scale-75 [animation-delay:1s]">
+            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+            </svg>
+        </div>
+        
+        <div className="inline-block px-4 py-1.5 rounded-full border border-black/5 dark:border-white/10 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md mb-6 text-[10px] font-bold tracking-[0.3em] text-zinc-500 dark:text-zinc-400 uppercase">
+            New: Pro presets enabled
+        </div>
+
+        <h1 className="text-6xl md:text-8xl font-black tracking-tightest mb-6 leading-none">
             Lumina <span className="gradient-text">QR</span>
         </h1>
-        <p className="text-zinc-400 dark:text-zinc-500 text-lg md:text-xl font-medium tracking-tight">
-            Precision crafted QR codes for the modern web.
+        <p className="max-w-2xl mx-auto text-zinc-500 dark:text-zinc-400 text-lg md:text-xl font-medium tracking-tight">
+            The world's most advanced QR code generator for agencies, creators, and modern brands.
         </p>
     </header>
 );
