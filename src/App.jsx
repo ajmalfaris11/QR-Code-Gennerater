@@ -130,48 +130,48 @@ const App = () => {
     };
 
     return (
-        <div className={`min-h-screen w-full transition-colors duration-1000 selection:bg-zinc-950 dark:selection:bg-white selection:text-white dark:selection:text-black ${isDark ? 'bg-black text-white dark' : 'bg-white text-zinc-950'}`}>
+        <div className={`min-h-screen w-full transition-colors duration-1000 selection:bg-zinc-950 dark:selection:bg-white selection:text-white dark:selection:text-black ${isDark ? 'bg-black text-white dark' : 'bg-[#fcfcfc] text-zinc-950'}`}>
             <div className="max-w-6xl mx-auto px-8 py-16 md:py-24">
                 <ThemeToggle isDark={isDark} onToggle={() => setIsDark(!isDark)} />
                 <Header />
                 <Presets activePreset={activePreset} onSelect={applyPreset} />
                 
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr,450px] gap-16 items-start">
-                    <section className="glass p-10 md:p-16 animate-fade-in [animation-delay:200ms] relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/[0.02] dark:bg-white/[0.01] rounded-full -mr-32 -mt-32 blur-3xl"></div>
+                    <section className="glass p-10 md:p-16 animate-fade-in [animation-delay:200ms] relative overflow-hidden group">
+                        <div className="absolute top-0 right-0 w-80 h-80 bg-zinc-500/5 dark:bg-white/5 rounded-full -mr-40 -mt-40 blur-3xl transition-opacity group-hover:opacity-100 opacity-50"></div>
                         
                         <div className="flex flex-col gap-6 mb-12 relative z-10">
                             <div className="flex items-center gap-4">
-                                <span className="w-1.5 h-6 bg-zinc-950 dark:bg-white rounded-full"></span>
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.4em]">Identity Stream</label>
+                                <span className={`w-1.5 h-6 rounded-full ${isDark ? 'bg-white' : 'bg-zinc-950'}`}></span>
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em]">Identity Input</label>
                             </div>
                             <input 
                                 type="text" 
-                                className="bg-zinc-50/50 dark:bg-zinc-950/50 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl px-8 py-6 text-zinc-950 dark:text-white focus:outline-none focus:border-zinc-950/30 dark:focus:border-white/20 transition-all font-medium placeholder:text-zinc-400 dark:placeholder:text-zinc-700 shadow-xl"
+                                className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl px-8 py-6 transition-all font-medium placeholder:text-zinc-400 dark:placeholder:text-zinc-700 shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
                                 value={options.data} 
                                 onChange={(e) => handleChange('data', e.target.value)}
-                                placeholder="https://ajmalfaris.dev"
+                                placeholder="Enter URL or content..."
                             />
                         </div>
 
                         <div className="grid grid-cols-2 gap-10 relative z-10">
                             <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.4em] pl-1">Primary Tone</label>
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em] pl-1">Primary Tone</label>
                                 <div className="h-20 w-full rounded-2xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
                                     <input 
                                         type="color" 
-                                        className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.2] group-hover:grayscale-0 transition-all"
+                                        className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.3] group-hover:grayscale-0 transition-all"
                                         value={options.dotsOptions.color || (isDark ? '#ffffff' : '#000000')}
                                         onChange={(e) => updateGradient(gradType, e.target.value, gradColor2)}
                                     />
                                 </div>
                             </div>
                             <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.4em] pl-1">Secondary Tone</label>
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em] pl-1">Secondary Tone</label>
                                 <div className="h-20 w-full rounded-2xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
                                     <input 
                                         type="color" 
-                                        className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.2] group-hover:grayscale-0 transition-all"
+                                        className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.3] group-hover:grayscale-0 transition-all"
                                         value={gradColor2}
                                         onChange={(e) => {
                                             setGradColor2(e.target.value);
@@ -181,9 +181,9 @@ const App = () => {
                                 </div>
                             </div>
                             <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.4em] pl-1">Visual Logic</label>
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em] pl-1">Visual Logic</label>
                                 <select 
-                                    className="bg-zinc-50/50 dark:bg-zinc-950/50 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl px-8 py-6 text-zinc-950 dark:text-white focus:outline-none focus:border-zinc-950/30 dark:focus:border-white/20 transition-all appearance-none cursor-pointer font-bold text-xs tracking-[0.3em] shadow-xl"
+                                    className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl px-8 py-6 transition-all appearance-none cursor-pointer font-bold text-xs tracking-[0.3em] shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
                                     value={gradType} 
                                     onChange={(e) => {
                                         setGradType(e.target.value);
@@ -195,7 +195,7 @@ const App = () => {
                                 </select>
                             </div>
                             <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.4em] pl-1">Canvas Fill</label>
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em] pl-1">Canvas Fill</label>
                                 <div className="h-20 w-full rounded-2xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
                                     <input 
                                         type="color" 
@@ -206,8 +206,8 @@ const App = () => {
                                 </div>
                             </div>
                             <div className="col-span-2 flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.4em] pl-1">Digital Signature</label>
-                                <div className="relative bg-zinc-50/30 dark:bg-zinc-950/30 backdrop-blur-xl border border-dashed border-black/10 dark:border-white/10 rounded-2xl p-10 flex items-center justify-center hover:border-black/30 dark:hover:border-white/30 hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-all cursor-pointer group shadow-inner">
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em] pl-1">Brand Signature</label>
+                                <div className={`relative backdrop-blur-xl border border-dashed rounded-2xl p-12 flex items-center justify-center transition-all cursor-pointer group shadow-inner ${isDark ? 'bg-zinc-900/30 border-white/10 hover:border-white/30 hover:bg-white/[0.02]' : 'bg-zinc-100/30 border-black/10 hover:border-black/30 hover:bg-black/[0.02]'}`}>
                                     <input type="file" className="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" onChange={handleLogoUpload} />
                                     <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-[0.3em] group-hover:text-zinc-950 dark:group-hover:text-white transition-colors">
                                         {options.image ? '✓ ASSET SYNCED' : 'UPLOAD BRAND ASSET'}
@@ -217,13 +217,19 @@ const App = () => {
                         </div>
                     </section>
 
-                    <section className="glass p-10 md:p-16 flex flex-col gap-12 animate-fade-in [animation-delay:300ms]">
+                    <section className="glass p-10 md:p-16 flex flex-col gap-14 animate-fade-in [animation-delay:300ms]">
                         <div className="flex justify-center items-center min-h-[350px] w-full" ref={qrRef} id="qr-preview"></div>
                         <div className="flex flex-col gap-6">
-                            <button onClick={() => download('png')} className="bg-zinc-950 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100 text-white dark:text-black font-black text-[11px] tracking-[0.5em] py-7 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_20px_40px_rgba(0,0,0,0.3)] dark:shadow-[0_20px_40px_rgba(255,255,255,0.1)]">
+                            <button 
+                                onClick={() => download('png')} 
+                                className={`font-black text-[12px] tracking-[0.5em] py-8 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl ${isDark ? 'bg-white text-black hover:bg-zinc-100 shadow-white/5' : 'bg-zinc-950 text-white hover:bg-zinc-800'}`}
+                            >
                                 DOWNLOAD PNG
                             </button>
-                            <button onClick={() => download('svg')} className="bg-transparent hover:bg-black/5 dark:hover:bg-white/5 text-zinc-950 dark:text-white font-black text-[11px] tracking-[0.5em] py-7 rounded-2xl transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20">
+                            <button 
+                                onClick={() => download('svg')} 
+                                className={`bg-transparent font-black text-[12px] tracking-[0.5em] py-8 rounded-2xl transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 ${isDark ? 'text-white hover:bg-white/5' : 'text-zinc-950 hover:bg-black/5'}`}
+                            >
                                 DOWNLOAD SVG
                             </button>
                         </div>
