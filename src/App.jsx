@@ -143,7 +143,7 @@ const App = () => {
                         <div className="flex flex-col gap-6 mb-12 relative z-10">
                             <div className="flex items-center gap-4">
                                 <span className={`w-1.5 h-6 rounded-full ${isDark ? 'bg-white' : 'bg-zinc-950'}`}></span>
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em]">Identity Input</label>
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em]">Identity Input</label>
                             </div>
                             <input 
                                 type="text" 
@@ -156,7 +156,7 @@ const App = () => {
 
                         <div className="grid grid-cols-2 gap-10 relative z-10">
                             <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em] pl-1">Primary Tone</label>
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Primary Tone</label>
                                 <div className="h-20 w-full rounded-2xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
                                     <input 
                                         type="color" 
@@ -167,7 +167,7 @@ const App = () => {
                                 </div>
                             </div>
                             <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em] pl-1">Secondary Tone</label>
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Secondary Tone</label>
                                 <div className="h-20 w-full rounded-2xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
                                     <input 
                                         type="color" 
@@ -181,7 +181,7 @@ const App = () => {
                                 </div>
                             </div>
                             <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em] pl-1">Visual Logic</label>
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Visual Logic</label>
                                 <select 
                                     className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl px-8 py-6 transition-all appearance-none cursor-pointer font-bold text-xs tracking-[0.3em] shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
                                     value={gradType} 
@@ -195,7 +195,7 @@ const App = () => {
                                 </select>
                             </div>
                             <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em] pl-1">Canvas Fill</label>
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Canvas Fill</label>
                                 <div className="h-20 w-full rounded-2xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
                                     <input 
                                         type="color" 
@@ -206,10 +206,10 @@ const App = () => {
                                 </div>
                             </div>
                             <div className="col-span-2 flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 uppercase tracking-[0.5em] pl-1">Brand Signature</label>
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Brand Signature</label>
                                 <div className={`relative backdrop-blur-xl border border-dashed rounded-2xl p-12 flex items-center justify-center transition-all cursor-pointer group shadow-inner ${isDark ? 'bg-zinc-900/30 border-white/10 hover:border-white/30 hover:bg-white/[0.02]' : 'bg-zinc-100/30 border-black/10 hover:border-black/30 hover:bg-black/[0.02]'}`}>
                                     <input type="file" className="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" onChange={handleLogoUpload} />
-                                    <span className="text-[10px] text-zinc-400 dark:text-zinc-500 font-black uppercase tracking-[0.3em] group-hover:text-zinc-950 dark:group-hover:text-white transition-colors">
+                                    <span className="text-[10px] text-zinc-400 dark:text-zinc-400 font-black uppercase tracking-[0.3em] group-hover:text-zinc-950 dark:group-hover:text-white transition-colors">
                                         {options.image ? '✓ ASSET SYNCED' : 'UPLOAD BRAND ASSET'}
                                     </span>
                                 </div>

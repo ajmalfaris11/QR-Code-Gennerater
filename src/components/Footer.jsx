@@ -5,12 +5,12 @@ const Footer = () => (
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col gap-2 text-center md:text-left">
                 <span className="text-sm font-bold tracking-widest text-zinc-950 dark:text-white uppercase">Lumina QR</span>
-                <p className="text-xs text-zinc-400 dark:text-zinc-600 font-medium">© 2024 Design Labs. All rights reserved.</p>
+                <p className="text-xs text-zinc-400 dark:text-zinc-300 font-medium">© 2024 Design Labs. All rights reserved.</p>
             </div>
             <div className="flex gap-8">
-                <a href="#" className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 hover:text-zinc-950 dark:hover:text-white transition-colors tracking-widest">PRIVACY</a>
-                <a href="#" className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 hover:text-zinc-950 dark:hover:text-white transition-colors tracking-widest">TERMS</a>
-                <a href="#" className="text-[10px] font-black text-zinc-400 dark:text-zinc-600 hover:text-zinc-950 dark:hover:text-white transition-colors tracking-widest">CONTACT</a>
+                <a href="#" className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-colors tracking-widest">PRIVACY</a>
+                <a href="#" className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-colors tracking-widest">TERMS</a>
+                <a href="#" className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-colors tracking-widest">CONTACT</a>
             </div>
         </div>
     </footer>
