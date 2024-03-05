@@ -12,8 +12,8 @@ const Header = () => (
                 <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
             </svg>
         </div>
-        
-        <div className="inline-block px-4 py-1.5 rounded-full border border-black/5 dark:border-white/10 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md mb-8 text-[10px] font-bold tracking-[0.3em] text-zinc-500 dark:text-zinc-300 uppercase">
+
+        <div className="inline-block px-4 py-1.5 rounded-full border border-black/5 dark:border-white/10 bg-black dark:bg-white backdrop-blur-md mb-8 text-[10px] font-bold tracking-[0.3em] text-zinc-500 dark:text-zinc-300 uppercase">
             Precision Design • Agency Ready
         </div>
 
