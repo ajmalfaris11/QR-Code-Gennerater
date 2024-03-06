@@ -87,7 +87,20 @@ const App = () => {
         if (file) {
             const reader = new FileReader();
             reader.onload = (event) => {
-                handleChange('image', event.target.result);
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const size = Math.min(img.width, img.height);
+                    canvas.width = size;
+                    canvas.height = size;
+                    const ctx = canvas.getContext('2d');
+                    ctx.beginPath();
+                    ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+                    ctx.clip();
+                    ctx.drawImage(img, (img.width - size) / 2, (img.height - size) / 2, size, size, 0, 0, size, size);
+                    handleChange('image', canvas.toDataURL());
+                };
+                img.src = event.target.result;
             };
             reader.readAsDataURL(file);
         }
@@ -157,7 +170,7 @@ const App = () => {
                         <div className="grid grid-cols-2 gap-10 relative z-10">
                             <div className="flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Primary Tone</label>
-                                <div className="h-20 w-full rounded-2xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
+                                <div className="h-20 w-full rounded-full overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
                                     <input 
                                         type="color" 
                                         className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.3] group-hover:grayscale-0 transition-all"
@@ -168,7 +181,7 @@ const App = () => {
                             </div>
                             <div className="flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Secondary Tone</label>
-                                <div className="h-20 w-full rounded-2xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
+                                <div className="h-20 w-full rounded-full overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
                                     <input 
                                         type="color" 
                                         className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.3] group-hover:grayscale-0 transition-all"
@@ -196,7 +209,7 @@ const App = () => {
                             </div>
                             <div className="flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Canvas Fill</label>
-                                <div className="h-20 w-full rounded-2xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
+                                <div className="h-20 w-full rounded-full overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
                                     <input 
                                         type="color" 
                                         className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0"
@@ -222,13 +235,13 @@ const App = () => {
                         <div className="flex flex-col gap-6">
                             <button 
                                 onClick={() => download('png')} 
-                                className={`font-black text-[12px] tracking-[0.5em] py-8 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl ${isDark ? 'bg-white text-black hover:bg-zinc-100 shadow-white/5' : 'bg-zinc-950 text-white hover:bg-zinc-800'}`}
+                                className={`font-black text-[12px] tracking-[0.5em] py-8 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl ${isDark ? 'bg-white text-black hover:bg-zinc-100 shadow-white/5' : 'bg-zinc-950 text-white hover:bg-zinc-800'}`}
                             >
                                 DOWNLOAD PNG
                             </button>
                             <button 
                                 onClick={() => download('svg')} 
-                                className={`bg-transparent font-black text-[12px] tracking-[0.5em] py-8 rounded-2xl transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 ${isDark ? 'text-white hover:bg-white/5' : 'text-zinc-950 hover:bg-black/5'}`}
+                                className={`bg-transparent font-black text-[12px] tracking-[0.5em] py-8 rounded-full transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 ${isDark ? 'text-white hover:bg-white/5' : 'text-zinc-950 hover:bg-black/5'}`}
                             >
                                 DOWNLOAD SVG
                             </button>
