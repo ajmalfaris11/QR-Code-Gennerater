@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Presets from './components/Presets';
 import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
+import SpaceBackground from './components/SpaceBackground';
 import { useQRCode } from './hooks/useQRCode';
 
 const App = () => {
@@ -144,7 +145,8 @@ const App = () => {
 
     return (
         <div className={`min-h-screen w-full transition-colors duration-1000 selection:bg-zinc-950 dark:selection:bg-white selection:text-white dark:selection:text-black ${isDark ? 'bg-black text-white dark' : 'bg-[#fcfcfc] text-zinc-950'}`}>
-            <div className="max-w-6xl mx-auto px-8 py-16 md:py-24">
+            <SpaceBackground />
+            <div className="max-w-6xl mx-auto px-8 py-16 md:py-24 relative z-10">
                 <ThemeToggle isDark={isDark} onToggle={() => setIsDark(!isDark)} />
                 <Header />
                 <Presets activePreset={activePreset} onSelect={applyPreset} />
