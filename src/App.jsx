@@ -16,8 +16,8 @@ const App = () => {
         width: 300,
         height: 300,
         data: 'https://github.com/ajmalfaris11',
-        dotsOptions: { 
-            color: '#ffffff', 
+        dotsOptions: {
+            color: '#ffffff',
             type: 'rounded',
             gradient: null
         },
@@ -110,9 +110,9 @@ const App = () => {
     const applyPreset = (preset) => {
         const themes = {
             neon: {
-                dotsOptions: { 
-                    gradient: { type: 'linear', rotation: 0, colorStops: [{offset:0, color: isDark ? '#ffffff' : '#000000'}, {offset:1, color:'#3f3f46'}] },
-                    type: 'dots' 
+                dotsOptions: {
+                    gradient: { type: 'linear', rotation: 0, colorStops: [{ offset: 0, color: isDark ? '#ffffff' : '#000000' }, { offset: 1, color: '#3f3f46' }] },
+                    type: 'dots'
                 },
                 backgroundOptions: { color: isDark ? '#000000' : '#ffffff' },
                 cornersSquareOptions: { type: 'dot' }
@@ -128,9 +128,9 @@ const App = () => {
                 cornersSquareOptions: { type: 'extra-rounded' }
             },
             gold: {
-                dotsOptions: { 
-                    gradient: { type: 'radial', rotation: 0, colorStops: [{offset:0, color: isDark ? '#ffffff' : '#000000'}, {offset:1, color:'#71717a'}] },
-                    type: 'classy' 
+                dotsOptions: {
+                    gradient: { type: 'radial', rotation: 0, colorStops: [{ offset: 0, color: isDark ? '#ffffff' : '#000000' }, { offset: 1, color: '#71717a' }] },
+                    type: 'classy'
                 },
                 backgroundOptions: { color: isDark ? '#000000' : '#ffffff' },
                 cornersSquareOptions: { type: 'extra-rounded' }
@@ -144,26 +144,26 @@ const App = () => {
     };
 
     return (
-        <div className={`min-h-screen w-full transition-colors duration-1000 selection:bg-zinc-950 dark:selection:bg-white selection:text-white dark:selection:text-black ${isDark ? 'bg-black text-white dark' : 'bg-[#fcfcfc] text-zinc-950'}`}>
+        <div className={`min-h-screen w-full transition-colors duration-1000 selection:bg-zinc-950 dark:selection:bg-white selection:text-white dark:selection:text-black ${isDark ? 'bg-black text-white dark' : 'bg-white text-zinc-950'}`}>
             <SpaceBackground />
             <div className="max-w-6xl mx-auto px-8 py-16 md:py-24 relative z-10">
                 <ThemeToggle isDark={isDark} onToggle={() => setIsDark(!isDark)} />
                 <Header />
                 <Presets activePreset={activePreset} onSelect={applyPreset} />
-                
+
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr,450px] gap-16 items-start">
                     <section className="glass p-10 md:p-16 animate-fade-in [animation-delay:200ms] relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-80 h-80 bg-zinc-500/5 dark:bg-white/5 rounded-full -mr-40 -mt-40 blur-3xl transition-opacity group-hover:opacity-100 opacity-50"></div>
-                        
+
                         <div className="flex flex-col gap-6 mb-12 relative z-10">
                             <div className="flex items-center gap-4">
                                 <span className={`w-1.5 h-6 rounded-full ${isDark ? 'bg-white' : 'bg-zinc-950'}`}></span>
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em]">Identity Input</label>
                             </div>
-                            <input 
-                                type="text" 
-                                className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl px-8 py-6 transition-all font-medium placeholder:text-zinc-400 dark:placeholder:text-zinc-700 shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
-                                value={options.data} 
+                            <input
+                                type="text"
+                                className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-full px-8 py-6 transition-all font-medium placeholder:text-zinc-400 dark:placeholder:text-zinc-700 shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
+                                value={options.data}
                                 onChange={(e) => handleChange('data', e.target.value)}
                                 placeholder="Enter URL or content..."
                             />
@@ -173,8 +173,8 @@ const App = () => {
                             <div className="flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Primary Tone</label>
                                 <div className="h-20 w-full rounded-full overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
-                                    <input 
-                                        type="color" 
+                                    <input
+                                        type="color"
                                         className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.3] group-hover:grayscale-0 transition-all"
                                         value={options.dotsOptions.color || (isDark ? '#ffffff' : '#000000')}
                                         onChange={(e) => updateGradient(gradType, e.target.value, gradColor2)}
@@ -183,9 +183,9 @@ const App = () => {
                             </div>
                             <div className="flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Secondary Tone</label>
-                                <div className="h-20 w-full rounded-full overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
-                                    <input 
-                                        type="color" 
+                                <div className="h-20 w-full rounded-full overflow-hidden transition-all cursor-pointer group">
+                                    <input
+                                        type="color"
                                         className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.3] group-hover:grayscale-0 transition-all"
                                         value={gradColor2}
                                         onChange={(e) => {
@@ -197,9 +197,9 @@ const App = () => {
                             </div>
                             <div className="flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Visual Logic</label>
-                                <select 
-                                    className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-2xl px-8 py-6 transition-all appearance-none cursor-pointer font-bold text-xs tracking-[0.3em] shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
-                                    value={gradType} 
+                                <select
+                                    className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-full px-8 py-6 transition-all appearance-none cursor-pointer font-bold text-xs tracking-[0.3em] shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
+                                    value={gradType}
                                     onChange={(e) => {
                                         setGradType(e.target.value);
                                         updateGradient(e.target.value, options.dotsOptions.color, gradColor2);
@@ -212,8 +212,8 @@ const App = () => {
                             <div className="flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Canvas Fill</label>
                                 <div className="h-20 w-full rounded-full overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
-                                    <input 
-                                        type="color" 
+                                    <input
+                                        type="color"
                                         className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0"
                                         value={options.backgroundOptions.color}
                                         onChange={(e) => handleChange('backgroundOptions', { color: e.target.value })}
@@ -235,15 +235,15 @@ const App = () => {
                     <section className="glass p-10 md:p-16 flex flex-col gap-14 animate-fade-in [animation-delay:300ms]">
                         <div className="flex justify-center items-center min-h-[350px] w-full" ref={qrRef} id="qr-preview"></div>
                         <div className="flex flex-col gap-6">
-                            <button 
-                                onClick={() => download('png')} 
-                                className={`font-black text-[12px] tracking-[0.5em] py-8 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl ${isDark ? 'bg-white text-black hover:bg-zinc-100 shadow-white/5' : 'bg-zinc-950 text-white hover:bg-zinc-800'}`}
+                            <button
+                                onClick={() => download('png')}
+                                className={`font-black text-[12px] tracking-[0.5em] py-6 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl ${isDark ? 'bg-white text-black hover:bg-zinc-100 shadow-white/5' : 'bg-zinc-950 text-white hover:bg-zinc-800'}`}
                             >
                                 DOWNLOAD PNG
                             </button>
-                            <button 
-                                onClick={() => download('svg')} 
-                                className={`bg-transparent font-black text-[12px] tracking-[0.5em] py-8 rounded-full transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 ${isDark ? 'text-white hover:bg-white/5' : 'text-zinc-950 hover:bg-black/5'}`}
+                            <button
+                                onClick={() => download('svg')}
+                                className={`bg-transparent font-black text-[12px] tracking-[0.5em] py-6 rounded-full transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 ${isDark ? 'text-white hover:bg-white/5' : 'text-zinc-950 hover:bg-black/5'}`}
                             >
                                 DOWNLOAD SVG
                             </button>

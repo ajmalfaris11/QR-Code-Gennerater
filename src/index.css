@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-    --bg-light: #f8f8f8;
+    --bg-light: #ffffff;
     --bg-dark: #000000;
     --grid-color: rgba(255, 255, 255, 0.03);
     --grid-color-light: rgba(0, 0, 0, 0.02);
@@ -47,7 +47,7 @@
     width: 1px;
     height: 1px;
     background: transparent;
-    box-shadow: 1744px 115px #FFF , 134px 1198px #FFF , 1927px 1141px #FFF , 1485px 566px #FFF , 1279px 653px #FFF , 720px 1827px #FFF , 1083px 1860px #FFF , 1434px 1475px #FFF , 199px 1272px #FFF , 432px 1473px #FFF , 648px 1221px #FFF , 1262px 1137px #FFF , 168px 1421px #FFF , 1930px 1658px #FFF , 1480px 1419px #FFF , 1423px 1205px #FFF , 187px 556px #FFF , 1341px 1184px #FFF , 1459px 1686px #FFF , 1689px 728px #FFF;
+    box-shadow: 1744px 115px #FFF , 134px 1198px #FFF , 1927px 1141px #FFF , 1485px 566px #FFF , 1279px 653px #FFF , 720px 1827px #FFF , 1083px 1860px #FFF , 1434px 1475px #FFF , 199px 1272px #FFF , 432px 1473px #FFF , 648px 1221px #FFF , 1262px 1137px #FFF , 168px 1421px #FFF , 1930px 1658px #FFF , 1480px 1419px #FFF , 1423px 1205px #FFF , 187px 556px #FFF , 1341px 1184px #FFF , 1459px 1686px #FFF , 1689px 728px #FFF, 500px 500px #FFF, 800px 200px #FFF, 1200px 900px #FFF, 300px 1500px #FFF, 1600px 1800px #FFF, 100px 100px #FFF, 1900px 300px #FFF, 400px 1200px #FFF, 1100px 1600px #FFF, 1700px 500px #FFF;
     animation: animStar 150s linear infinite;
   }
 
@@ -55,7 +55,7 @@
     width: 2px;
     height: 2px;
     background: transparent;
-    box-shadow: 1209px 1312px #FFF , 1218px 439px #FFF , 1445px 1014px #FFF , 345px 744px #FFF , 1891px 24px #FFF , 354px 1391px #FFF , 1070px 1489px #FFF , 1530px 1546px #FFF , 911px 1424px #FFF , 1406px 424px #FFF;
+    box-shadow: 1209px 1312px #FFF , 1218px 439px #FFF , 1445px 1014px #FFF , 345px 744px #FFF , 1891px 24px #FFF , 354px 1391px #FFF , 1070px 1489px #FFF , 1530px 1546px #FFF , 911px 1424px #FFF , 1406px 424px #FFF, 200px 800px #FFF, 600px 1400px #FFF, 1500px 300px #FFF, 1800px 1700px #FFF, 1000px 100px #FFF;
     animation: animStar 100s linear infinite;
   }
 
@@ -81,7 +81,7 @@
   }
 
   #qr-preview canvas, #qr-preview svg {
-    @apply max-w-full h-auto rounded-full shadow-2xl dark:shadow-[0_0_100px_-20px_rgba(255,255,255,0.2)] transition-all duration-1000 !important;
+    @apply max-w-full h-auto rounded-[2.5rem] shadow-2xl dark:shadow-[0_0_100px_-20px_rgba(255,255,255,0.2)] transition-all duration-1000 !important;
   }
 
   .sparkle {
