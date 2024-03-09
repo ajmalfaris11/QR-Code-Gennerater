@@ -34,6 +34,7 @@ const App = () => {
         ...options,
         width: 1000,
         height: 1000,
+        margin: 20,
         imageOptions: { margin: 10, crossOrigin: 'anonymous' }
     });
 
@@ -233,7 +234,7 @@ const App = () => {
                     </section>
 
                     <section className="glass p-10 md:p-16 flex flex-col gap-14 animate-fade-in [animation-delay:300ms]">
-                        <div className="flex justify-center items-center min-h-[350px] w-full" ref={qrRef} id="qr-preview"></div>
+                        <div className="flex justify-center items-center min-h-[400px] w-full bg-black/[0.02] dark:bg-white/[0.02] rounded-[2.5rem] p-10 shadow-inner" ref={qrRef} id="qr-preview"></div>
                         <div className="flex flex-col gap-6">
                             <button
                                 onClick={() => download('png')}
