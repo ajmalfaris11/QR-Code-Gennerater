@@ -34,7 +34,6 @@ const App = () => {
         ...options,
         width: 1000,
         height: 1000,
-        margin: 20,
         imageOptions: { margin: 10, crossOrigin: 'anonymous' }
     });
 
@@ -173,27 +172,37 @@ const App = () => {
                         <div className="grid grid-cols-2 gap-10 relative z-10">
                             <div className="flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Primary Tone</label>
-                                <div className="h-20 w-full rounded-full overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
-                                    <input
-                                        type="color"
-                                        className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.3] group-hover:grayscale-0 transition-all"
-                                        value={options.dotsOptions.color || (isDark ? '#ffffff' : '#000000')}
-                                        onChange={(e) => updateGradient(gradType, e.target.value, gradColor2)}
-                                    />
+                                <div className="flex items-center gap-4 bg-black/5 dark:bg-white/5 p-3 rounded-full border border-black/5 dark:border-white/10 backdrop-blur-xl group transition-all hover:bg-black/10 dark:hover:bg-white/10">
+                                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-lg relative cursor-pointer">
+                                        <input 
+                                            type="color" 
+                                            className="absolute inset-0 w-[150%] h-[150%] -top-[25%] -left-[25%] cursor-pointer bg-none border-none p-0"
+                                            value={options.dotsOptions.color || (isDark ? '#ffffff' : '#000000')}
+                                            onChange={(e) => updateGradient(gradType, e.target.value, gradColor2)}
+                                        />
+                                    </div>
+                                    <span className="text-xs font-mono font-bold tracking-widest text-zinc-600 dark:text-zinc-400">
+                                        {(options.dotsOptions.color || (isDark ? '#FFFFFF' : '#000000')).toUpperCase()}
+                                    </span>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Secondary Tone</label>
-                                <div className="h-20 w-full rounded-full overflow-hidden transition-all cursor-pointer group">
-                                    <input
-                                        type="color"
-                                        className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0 grayscale-[0.3] group-hover:grayscale-0 transition-all"
-                                        value={gradColor2}
-                                        onChange={(e) => {
-                                            setGradColor2(e.target.value);
-                                            updateGradient(gradType, options.dotsOptions.color, e.target.value);
-                                        }}
-                                    />
+                                <div className="flex items-center gap-4 bg-black/5 dark:bg-white/5 p-3 rounded-full border border-black/5 dark:border-white/10 backdrop-blur-xl group transition-all hover:bg-black/10 dark:hover:border-white/10">
+                                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-lg relative cursor-pointer">
+                                        <input 
+                                            type="color" 
+                                            className="absolute inset-0 w-[150%] h-[150%] -top-[25%] -left-[25%] cursor-pointer bg-none border-none p-0"
+                                            value={gradColor2}
+                                            onChange={(e) => {
+                                                setGradColor2(e.target.value);
+                                                updateGradient(gradType, options.dotsOptions.color, e.target.value);
+                                            }}
+                                        />
+                                    </div>
+                                    <span className="text-xs font-mono font-bold tracking-widest text-zinc-600 dark:text-zinc-400">
+                                        {gradColor2.toUpperCase()}
+                                    </span>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-5">
@@ -212,13 +221,18 @@ const App = () => {
                             </div>
                             <div className="flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Canvas Fill</label>
-                                <div className="h-20 w-full rounded-full overflow-hidden border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 transition-all cursor-pointer group shadow-2xl">
-                                    <input
-                                        type="color"
-                                        className="w-[140%] h-[140%] -m-[20%] cursor-pointer bg-none border-none p-0"
-                                        value={options.backgroundOptions.color}
-                                        onChange={(e) => handleChange('backgroundOptions', { color: e.target.value })}
-                                    />
+                                <div className="flex items-center gap-4 bg-black/5 dark:bg-white/5 p-3 rounded-full border border-black/5 dark:border-white/10 backdrop-blur-xl group transition-all hover:bg-black/10 dark:hover:border-white/10">
+                                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-lg relative cursor-pointer">
+                                        <input 
+                                            type="color" 
+                                            className="absolute inset-0 w-[150%] h-[150%] -top-[25%] -left-[25%] cursor-pointer bg-none border-none p-0"
+                                            value={options.backgroundOptions.color}
+                                            onChange={(e) => handleChange('backgroundOptions', { color: e.target.value })}
+                                        />
+                                    </div>
+                                    <span className="text-xs font-mono font-bold tracking-widest text-zinc-600 dark:text-zinc-400">
+                                        {options.backgroundOptions.color.toUpperCase()}
+                                    </span>
                                 </div>
                             </div>
                             <div className="col-span-2 flex flex-col gap-5">
@@ -234,7 +248,7 @@ const App = () => {
                     </section>
 
                     <section className="glass p-10 md:p-16 flex flex-col gap-14 animate-fade-in [animation-delay:300ms]">
-                        <div className="flex justify-center items-center min-h-[400px] w-full bg-black/[0.02] dark:bg-white/[0.02] rounded-[2.5rem] p-10 shadow-inner" ref={qrRef} id="qr-preview"></div>
+                        <div className="flex justify-center items-center min-h-[350px] w-full" ref={qrRef} id="qr-preview"></div>
                         <div className="flex flex-col gap-6">
                             <button
                                 onClick={() => download('png')}
