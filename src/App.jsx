@@ -5,6 +5,7 @@ import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
 import SpaceBackground from './components/SpaceBackground';
 import { useQRCode } from './hooks/useQRCode';
+import { HexColorPicker } from 'react-colorful';
 
 const App = () => {
     const [isDark, setIsDark] = useState(() => {
@@ -29,6 +30,7 @@ const App = () => {
     const [gradType, setGradType] = useState('none');
     const [gradColor2, setGradColor2] = useState('#a1a1aa');
     const [activePreset, setActivePreset] = useState(null);
+    const [showPicker, setShowPicker] = useState(null); // 'primary', 'secondary', 'canvas'
 
     const { qrRef, download } = useQRCode({
         ...options,
@@ -170,40 +172,60 @@ const App = () => {
                         </div>
 
                         <div className="grid grid-cols-2 gap-10 relative z-10">
-                            <div className="flex flex-col gap-5">
+                            <div className="flex flex-col gap-5 relative">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Primary Tone</label>
-                                <div className="flex items-center gap-4 bg-black/5 dark:bg-white/5 p-3 rounded-full border border-black/5 dark:border-white/10 backdrop-blur-xl group transition-all hover:bg-black/10 dark:hover:bg-white/10">
-                                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-lg relative cursor-pointer">
-                                        <input 
-                                            type="color" 
-                                            className="absolute inset-0 w-[150%] h-[150%] -top-[25%] -left-[25%] cursor-pointer bg-none border-none p-0"
-                                            value={options.dotsOptions.color || (isDark ? '#ffffff' : '#000000')}
-                                            onChange={(e) => updateGradient(gradType, e.target.value, gradColor2)}
-                                        />
-                                    </div>
+                                <div 
+                                    onClick={() => setShowPicker(showPicker === 'primary' ? null : 'primary')}
+                                    className="flex items-center gap-4 bg-black/5 dark:bg-white/5 p-3 rounded-full border border-black/5 dark:border-white/10 backdrop-blur-xl group transition-all hover:bg-black/10 dark:hover:bg-white/10 cursor-pointer"
+                                >
+                                    <div 
+                                        className="w-12 h-12 rounded-full border-2 border-white/20 shadow-lg"
+                                        style={{ backgroundColor: options.dotsOptions.color || (isDark ? '#ffffff' : '#000000') }}
+                                    />
                                     <span className="text-xs font-mono font-bold tracking-widest text-zinc-600 dark:text-zinc-400">
                                         {(options.dotsOptions.color || (isDark ? '#FFFFFF' : '#000000')).toUpperCase()}
                                     </span>
                                 </div>
-                            </div>
-                            <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Secondary Tone</label>
-                                <div className="flex items-center gap-4 bg-black/5 dark:bg-white/5 p-3 rounded-full border border-black/5 dark:border-white/10 backdrop-blur-xl group transition-all hover:bg-black/10 dark:hover:border-white/10">
-                                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-lg relative cursor-pointer">
-                                        <input 
-                                            type="color" 
-                                            className="absolute inset-0 w-[150%] h-[150%] -top-[25%] -left-[25%] cursor-pointer bg-none border-none p-0"
-                                            value={gradColor2}
-                                            onChange={(e) => {
-                                                setGradColor2(e.target.value);
-                                                updateGradient(gradType, options.dotsOptions.color, e.target.value);
-                                            }}
-                                        />
+                                {showPicker === 'primary' && (
+                                    <div className="absolute z-[100] mt-24 left-0 animate-fade-in">
+                                        <div className="fixed inset-0" onClick={() => setShowPicker(null)} />
+                                        <div className="relative glass p-4 !rounded-3xl shadow-2xl border border-white/20 dark:border-white/10">
+                                            <HexColorPicker 
+                                                color={options.dotsOptions.color || (isDark ? '#ffffff' : '#000000')} 
+                                                onChange={(color) => updateGradient(gradType, color, gradColor2)} 
+                                            />
+                                        </div>
                                     </div>
+                                )}
+                            </div>
+                            <div className="flex flex-col gap-5 relative">
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Secondary Tone</label>
+                                <div 
+                                    onClick={() => setShowPicker(showPicker === 'secondary' ? null : 'secondary')}
+                                    className="flex items-center gap-4 bg-black/5 dark:bg-white/5 p-3 rounded-full border border-black/5 dark:border-white/10 backdrop-blur-xl group transition-all hover:bg-black/10 dark:hover:bg-white/10 cursor-pointer"
+                                >
+                                    <div 
+                                        className="w-12 h-12 rounded-full border-2 border-white/20 shadow-lg"
+                                        style={{ backgroundColor: gradColor2 }}
+                                    />
                                     <span className="text-xs font-mono font-bold tracking-widest text-zinc-600 dark:text-zinc-400">
                                         {gradColor2.toUpperCase()}
                                     </span>
                                 </div>
+                                {showPicker === 'secondary' && (
+                                    <div className="absolute z-[100] mt-24 left-0 animate-fade-in">
+                                        <div className="fixed inset-0" onClick={() => setShowPicker(null)} />
+                                        <div className="relative glass p-4 !rounded-3xl shadow-2xl border border-white/20 dark:border-white/10">
+                                            <HexColorPicker 
+                                                color={gradColor2} 
+                                                onChange={(color) => {
+                                                    setGradColor2(color);
+                                                    updateGradient(gradType, options.dotsOptions.color, color);
+                                                }} 
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                             <div className="flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Visual Logic</label>
@@ -219,21 +241,31 @@ const App = () => {
                                     <option value="radial">RADIAL</option>
                                 </select>
                             </div>
-                            <div className="flex flex-col gap-5">
+                            <div className="flex flex-col gap-5 relative">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Canvas Fill</label>
-                                <div className="flex items-center gap-4 bg-black/5 dark:bg-white/5 p-3 rounded-full border border-black/5 dark:border-white/10 backdrop-blur-xl group transition-all hover:bg-black/10 dark:hover:border-white/10">
-                                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-lg relative cursor-pointer">
-                                        <input 
-                                            type="color" 
-                                            className="absolute inset-0 w-[150%] h-[150%] -top-[25%] -left-[25%] cursor-pointer bg-none border-none p-0"
-                                            value={options.backgroundOptions.color}
-                                            onChange={(e) => handleChange('backgroundOptions', { color: e.target.value })}
-                                        />
-                                    </div>
+                                <div 
+                                    onClick={() => setShowPicker(showPicker === 'canvas' ? null : 'canvas')}
+                                    className="flex items-center gap-4 bg-black/5 dark:bg-white/5 p-3 rounded-full border border-black/5 dark:border-white/10 backdrop-blur-xl group transition-all hover:bg-black/10 dark:hover:bg-white/10 cursor-pointer"
+                                >
+                                    <div 
+                                        className="w-12 h-12 rounded-full border-2 border-white/20 shadow-lg"
+                                        style={{ backgroundColor: options.backgroundOptions.color }}
+                                    />
                                     <span className="text-xs font-mono font-bold tracking-widest text-zinc-600 dark:text-zinc-400">
                                         {options.backgroundOptions.color.toUpperCase()}
                                     </span>
                                 </div>
+                                {showPicker === 'canvas' && (
+                                    <div className="absolute z-[100] mt-24 left-0 animate-fade-in">
+                                        <div className="fixed inset-0" onClick={() => setShowPicker(null)} />
+                                        <div className="relative glass p-4 !rounded-3xl shadow-2xl border border-white/20 dark:border-white/10">
+                                            <HexColorPicker 
+                                                color={options.backgroundOptions.color} 
+                                                onChange={(color) => handleChange('backgroundOptions', { color })} 
+                                            />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                             <div className="col-span-2 flex flex-col gap-5">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Brand Signature</label>
