@@ -1,16 +1,26 @@
 import React from 'react';
+import { FiGithub, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi';
 
 const Footer = () => (
     <footer className="max-w-6xl mx-auto px-8 py-12 mt-12 animate-fade-in [animation-delay:400ms] border-t border-black/[0.05] dark:border-white/[0.05]">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex flex-col gap-2 text-center md:text-left">
-                <span className="text-sm font-bold tracking-widest text-zinc-950 dark:text-white uppercase">Lumina QR</span>
-                <p className="text-xs text-zinc-400 dark:text-zinc-300 font-medium">© 2024 Design Labs. All rights reserved.</p>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-10">
+            <div className="flex flex-col gap-3 text-center md:text-left">
+                <span className="text-sm font-black tracking-[0.3em] text-zinc-950 dark:text-white uppercase">Lumina QR</span>
+                <p className="text-xs text-zinc-400 dark:text-zinc-500 font-bold uppercase tracking-widest">© 2024 Design Labs • Built by ajmalfaris11</p>
             </div>
-            <div className="flex gap-8">
-                <a href="#" className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-colors tracking-widest">PRIVACY</a>
-                <a href="#" className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-colors tracking-widest">TERMS</a>
-                <a href="#" className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white transition-colors tracking-widest">CONTACT</a>
+            <div className="flex items-center gap-6">
+                <a href="https://github.com/ajmalfaris11" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-black/5 dark:bg-white/5 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:scale-110 transition-all border border-transparent hover:border-black/10 dark:hover:border-white/10">
+                    <FiGithub size={18} />
+                </a>
+                <a href="#" className="p-3 rounded-full bg-black/5 dark:bg-white/5 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:scale-110 transition-all border border-transparent hover:border-black/10 dark:hover:border-white/10">
+                    <FiLinkedin size={18} />
+                </a>
+                <a href="#" className="p-3 rounded-full bg-black/5 dark:bg-white/5 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:scale-110 transition-all border border-transparent hover:border-black/10 dark:hover:border-white/10">
+                    <FiTwitter size={18} />
+                </a>
+                <a href="#" className="p-3 rounded-full bg-black/5 dark:bg-white/5 text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white hover:scale-110 transition-all border border-transparent hover:border-black/10 dark:hover:border-white/10">
+                    <FiInstagram size={18} />
+                </a>
             </div>
         </div>
     </footer>

@@ -241,6 +241,31 @@ const App = () => {
                                     <option value="radial">RADIAL</option>
                                 </select>
                             </div>
+                            <div className="flex flex-col gap-5">
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Data Pattern</label>
+                                <select
+                                    className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-full px-8 py-6 transition-all appearance-none cursor-pointer font-bold text-xs tracking-[0.3em] shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
+                                    value={options.dotsOptions.type}
+                                    onChange={(e) => handleDotChange({ type: e.target.value })}>
+                                    <option value="rounded">ROUNDED</option>
+                                    <option value="dots">DOTS</option>
+                                    <option value="classy">CLASSY</option>
+                                    <option value="classy-rounded">CLASSY ROUND</option>
+                                    <option value="square">SQUARE</option>
+                                    <option value="extra-rounded">EXTRA ROUND</option>
+                                </select>
+                            </div>
+                            <div className="flex flex-col gap-5">
+                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Eye Style</label>
+                                <select
+                                    className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-full px-8 py-6 transition-all appearance-none cursor-pointer font-bold text-xs tracking-[0.3em] shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
+                                    value={options.cornersSquareOptions.type}
+                                    onChange={(e) => handleChange('cornersSquareOptions', { type: e.target.value })}>
+                                    <option value="extra-rounded">ROUNDED</option>
+                                    <option value="dot">DOT</option>
+                                    <option value="square">SQUARE</option>
+                                </select>
+                            </div>
                             <div className="flex flex-col gap-5 relative">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Canvas Fill</label>
                                 <div 
