@@ -36,6 +36,7 @@ const App = () => {
         ...options,
         width: 1000,
         height: 1000,
+        margin: 40,
         imageOptions: { margin: 10, crossOrigin: 'anonymous' }
     });
 
