@@ -16,7 +16,11 @@ export const useQRCode = (options) => {
     }, [options]);
 
     const download = (extension) => {
-        qrCode.current.download({ name: 'qr-aura', extension });
+        qrCode.current.download({ 
+            name: 'lumina-qr', 
+            extension,
+            ...(extension === 'svg' ? { saveAsBlob: true } : {})
+        });
     };
 
     return { qrRef, download };
