@@ -3,23 +3,21 @@ import QRCodeStyling from 'qr-code-styling';
 
 export const useQRCode = (options) => {
     const qrRef = useRef(null);
-    const qrCode = useRef(new QRCodeStyling(options));
+    const qrCode = useRef(null);
 
     useEffect(() => {
+        qrCode.current = new QRCodeStyling(options);
         if (qrRef.current) {
+            qrRef.current.innerHTML = '';
             qrCode.current.append(qrRef.current);
         }
-    }, []);
-
-    useEffect(() => {
-        qrCode.current.update(options);
     }, [options]);
 
     const download = (extension) => {
+        if (!qrCode.current) return;
         qrCode.current.download({ 
-            name: 'lumina-qr', 
-            extension,
-            ...(extension === 'svg' ? { saveAsBlob: true } : {})
+            name: `lumina-qr-${Date.now()}`, 
+            extension 
         });
     };
 
