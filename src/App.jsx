@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import SpaceBackground from './components/SpaceBackground';
 import { useQRCode } from './hooks/useQRCode';
 import { HexColorPicker } from 'react-colorful';
+import { FiChevronDown } from 'react-icons/fi';
 
 const App = () => {
     const [isDark, setIsDark] = useState(() => {
@@ -145,6 +146,50 @@ const App = () => {
             setActivePreset(preset);
         }
     };
+    
+    const CustomSelect = ({ label, value, options, onChange }) => {
+        const [isOpen, setIsOpen] = useState(false);
+        const containerRef = React.useRef(null);
+
+        useEffect(() => {
+            const handleClickOutside = (event) => {
+                if (containerRef.current && !containerRef.current.contains(event.target)) {
+                    setIsOpen(false);
+                }
+            };
+            document.addEventListener('mousedown', handleClickOutside);
+            return () => document.removeEventListener('mousedown', handleClickOutside);
+        }, []);
+
+        return (
+            <div className="flex flex-col gap-5 relative" ref={containerRef}>
+                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">{label}</label>
+                <div 
+                    onClick={() => setIsOpen(!isOpen)}
+                    className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-full px-8 py-6 transition-all cursor-pointer font-bold text-[10px] tracking-[0.3em] shadow-xl flex justify-between items-center group ${isDark ? 'bg-zinc-900/50 text-white hover:border-white/20' : 'bg-zinc-100/50 text-zinc-950 hover:border-black/20'}`}
+                >
+                    <span className="uppercase">{options.find(opt => opt.value === value)?.label || value}</span>
+                    <FiChevronDown className={`transition-transform duration-500 ${isOpen ? 'rotate-180' : ''} text-zinc-400`} />
+                </div>
+                {isOpen && (
+                    <div className="absolute z-[100] top-full mt-4 left-0 w-full glass !rounded-[2rem] overflow-hidden animate-fade-in py-3 border border-white/20 dark:border-white/10 shadow-2xl">
+                        {options.map(opt => (
+                            <div 
+                                key={opt.value}
+                                onClick={() => {
+                                    onChange(opt.value);
+                                    setIsOpen(false);
+                                }}
+                                className={`px-8 py-4 cursor-pointer text-[9px] font-black tracking-[0.2em] uppercase transition-all hover:bg-black/5 dark:hover:bg-white/5 ${value === opt.value ? (isDark ? 'text-white bg-white/10' : 'text-black bg-black/5') : 'text-zinc-500 dark:text-zinc-400'}`}
+                            >
+                                {opt.label}
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+        );
+    };
 
     return (
         <div className={`min-h-screen w-full transition-colors duration-1000 selection:bg-zinc-950 dark:selection:bg-white selection:text-white dark:selection:text-black ${isDark ? 'bg-black text-white dark' : 'bg-white text-zinc-950'}`}>
@@ -228,45 +273,42 @@ const App = () => {
                                     </div>
                                 )}
                             </div>
-                            <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Visual Logic</label>
-                                <select
-                                    className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-full px-8 py-6 transition-all appearance-none cursor-pointer font-bold text-xs tracking-[0.3em] shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
-                                    value={gradType}
-                                    onChange={(e) => {
-                                        setGradType(e.target.value);
-                                        updateGradient(e.target.value, options.dotsOptions.color, gradColor2);
-                                    }}>
-                                    <option value="none">SOLID</option>
-                                    <option value="linear">LINEAR</option>
-                                    <option value="radial">RADIAL</option>
-                                </select>
-                            </div>
-                            <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Data Pattern</label>
-                                <select
-                                    className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-full px-8 py-6 transition-all appearance-none cursor-pointer font-bold text-xs tracking-[0.3em] shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
-                                    value={options.dotsOptions.type}
-                                    onChange={(e) => handleDotChange({ type: e.target.value })}>
-                                    <option value="rounded">ROUNDED</option>
-                                    <option value="dots">DOTS</option>
-                                    <option value="classy">CLASSY</option>
-                                    <option value="classy-rounded">CLASSY ROUND</option>
-                                    <option value="square">SQUARE</option>
-                                    <option value="extra-rounded">EXTRA ROUND</option>
-                                </select>
-                            </div>
-                            <div className="flex flex-col gap-5">
-                                <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Eye Style</label>
-                                <select
-                                    className={`backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.08] rounded-full px-8 py-6 transition-all appearance-none cursor-pointer font-bold text-xs tracking-[0.3em] shadow-xl ${isDark ? 'bg-zinc-900/50 text-white focus:border-white/20' : 'bg-zinc-100/50 text-zinc-950 focus:border-zinc-950/30'}`}
-                                    value={options.cornersSquareOptions.type}
-                                    onChange={(e) => handleChange('cornersSquareOptions', { type: e.target.value })}>
-                                    <option value="extra-rounded">ROUNDED</option>
-                                    <option value="dot">DOT</option>
-                                    <option value="square">SQUARE</option>
-                                </select>
-                            </div>
+                            <CustomSelect 
+                                label="Visual Logic"
+                                value={gradType}
+                                options={[
+                                    { value: 'none', label: 'SOLID' },
+                                    { value: 'linear', label: 'LINEAR' },
+                                    { value: 'radial', label: 'RADIAL' }
+                                ]}
+                                onChange={(val) => {
+                                    setGradType(val);
+                                    updateGradient(val, options.dotsOptions.color, gradColor2);
+                                }}
+                            />
+                            <CustomSelect 
+                                label="Data Pattern"
+                                value={options.dotsOptions.type}
+                                options={[
+                                    { value: 'rounded', label: 'ROUNDED' },
+                                    { value: 'dots', label: 'DOTS' },
+                                    { value: 'classy', label: 'CLASSY' },
+                                    { value: 'classy-rounded', label: 'CLASSY ROUND' },
+                                    { value: 'square', label: 'SQUARE' },
+                                    { value: 'extra-rounded', label: 'EXTRA ROUND' }
+                                ]}
+                                onChange={(val) => handleDotChange({ type: val })}
+                            />
+                            <CustomSelect 
+                                label="Eye Style"
+                                value={options.cornersSquareOptions.type}
+                                options={[
+                                    { value: 'extra-rounded', label: 'ROUNDED' },
+                                    { value: 'dot', label: 'DOT' },
+                                    { value: 'square', label: 'SQUARE' }
+                                ]}
+                                onChange={(val) => handleChange('cornersSquareOptions', { type: val })}
+                            />
                             <div className="flex flex-col gap-5 relative">
                                 <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Canvas Fill</label>
                                 <div 
