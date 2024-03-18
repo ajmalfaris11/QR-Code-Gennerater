@@ -30,8 +30,8 @@
 
 @layer components {
   .glass {
-    @apply bg-gradient-to-br from-white/30 to-black/10 dark:from-white/10 dark:to-black/40 backdrop-blur-3xl border border-white/30 dark:border-white/10 rounded-[2.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] dark:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)] transition-all duration-700;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    @apply bg-zinc-50/90 dark:bg-zinc-950/95 backdrop-blur-3xl border border-black/5 dark:border-white/10 rounded-[2.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] dark:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.9)] transition-all duration-700;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
   
   .glass-card {
