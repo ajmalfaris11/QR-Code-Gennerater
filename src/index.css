@@ -16,6 +16,12 @@
         linear-gradient(var(--grid-color-light) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-color-light) 1px, transparent 1px);
     background-size: 40px 40px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  body::-webkit-scrollbar {
+    display: none;
   }
   
   .dark body {
