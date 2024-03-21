@@ -10,7 +10,7 @@
 }
 
 @layer base {
-  body {
+  html, body {
     @apply bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-zinc-950 dark:text-white min-h-screen font-sans antialiased transition-colors duration-1000;
     background-image: 
         linear-gradient(var(--grid-color-light) 1px, transparent 1px),
@@ -20,7 +20,7 @@
     scrollbar-width: none;
   }
   
-  body::-webkit-scrollbar {
+  html::-webkit-scrollbar, body::-webkit-scrollbar {
     display: none;
   }
   
