@@ -19,7 +19,7 @@ const App = () => {
         height: 300,
         data: 'https://github.com/ajmalfaris11',
         dotsOptions: {
-            color: '#ffffff',
+            color: '#000000',
             type: 'rounded',
             gradient: null
         },
@@ -46,17 +46,9 @@ const App = () => {
         if (isDark) {
             root.classList.add('dark');
             localStorage.setItem('theme', 'dark');
-            setOptions(prev => ({
-                ...prev,
-                dotsOptions: { ...prev.dotsOptions, color: prev.dotsOptions.color === '#000000' ? '#ffffff' : prev.dotsOptions.color }
-            }));
         } else {
             root.classList.remove('dark');
             localStorage.setItem('theme', 'light');
-            setOptions(prev => ({
-                ...prev,
-                dotsOptions: { ...prev.dotsOptions, color: prev.dotsOptions.color === '#ffffff' ? '#000000' : prev.dotsOptions.color }
-            }));
         }
     }, [isDark]);
 
