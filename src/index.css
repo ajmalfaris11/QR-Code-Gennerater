@@ -10,8 +10,8 @@
 }
 
 @layer base {
-  html, body {
-    @apply bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-zinc-950 dark:text-white min-h-screen font-sans antialiased transition-colors duration-1000;
+  body {
+    @apply bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-zinc-950 dark:text-white min-h-screen font-['Outfit'] antialiased transition-colors duration-1000;
     background-image: 
         linear-gradient(var(--grid-color-light) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-color-light) 1px, transparent 1px);
@@ -92,5 +92,15 @@
 
   .sparkle {
     @apply absolute pointer-events-none text-zinc-300 dark:text-white/40 animate-pulse;
+  }
+
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: gradient-move 4s linear infinite;
+  }
+
+  @keyframes gradient-move {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
   }
 }
