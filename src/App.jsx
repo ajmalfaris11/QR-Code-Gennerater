@@ -17,7 +17,7 @@ const App = () => {
     const [options, setOptions] = useState({
         width: 300,
         height: 300,
-        data: 'https://github.com/ajmalfaris11',
+        data: '',
         dotsOptions: {
             color: '#000000',
             type: 'rounded',
