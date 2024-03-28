@@ -17,7 +17,7 @@ const ConfigPanel = ({
     setShowPicker
 }) => {
     return (
-        <section className="glass p-10 md:p-16 animate-fade-in [animation-delay:200ms] relative overflow-hidden group">
+        <section className="glass p-6 md:p-16 animate-fade-in [animation-delay:200ms] relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-80 h-80 bg-zinc-500/5 dark:bg-white/5 rounded-full -mr-40 -mt-40 blur-3xl transition-opacity group-hover:opacity-100 opacity-50"></div>
 
             <div className="flex flex-col gap-6 mb-12 relative z-10">
@@ -34,7 +34,7 @@ const ConfigPanel = ({
                 />
             </div>
 
-            <div className="grid grid-cols-2 gap-10 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10 relative z-10">
                 <ColorControl 
                     label="Primary Tone"
                     color={options.dotsOptions.color || (isDark ? '#ffffff' : '#000000')}
@@ -107,9 +107,9 @@ const ConfigPanel = ({
                     isDark={isDark}
                 />
 
-                <div className="col-span-2 flex flex-col gap-5">
+                <div className="col-span-1 sm:col-span-2 flex flex-col gap-5">
                     <label className="text-[10px] font-black text-zinc-400 dark:text-zinc-300 uppercase tracking-[0.5em] pl-1">Brand Signature</label>
-                    <div className={`relative backdrop-blur-xl border border-dashed rounded-2xl p-12 flex items-center justify-center transition-all cursor-pointer group shadow-inner ${isDark ? 'bg-zinc-900/30 border-white/10 hover:border-white/30 hover:bg-white/[0.02]' : 'bg-zinc-100/30 border-black/10 hover:border-black/30 hover:bg-black/[0.02]'}`}>
+                    <div className={`relative backdrop-blur-xl border border-dashed rounded-2xl p-8 md:p-12 flex items-center justify-center transition-all cursor-pointer group shadow-inner ${isDark ? 'bg-zinc-900/30 border-white/10 hover:border-white/30 hover:bg-white/[0.02]' : 'bg-zinc-100/30 border-black/10 hover:border-black/30 hover:bg-black/[0.02]'}`}>
                         <input type="file" className="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" onChange={handleLogoUpload} />
                         <span className="text-[10px] text-zinc-400 dark:text-zinc-400 font-black uppercase tracking-[0.3em] group-hover:text-zinc-950 dark:group-hover:text-white transition-colors">
                             {options.image ? '✓ ASSET SYNCED' : 'UPLOAD BRAND ASSET'}

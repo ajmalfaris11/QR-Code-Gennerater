@@ -2,7 +2,7 @@ import React from 'react';
 
 const PreviewPanel = ({ qrRef, download, isDark }) => {
     return (
-        <section className="glass p-10 md:p-16 flex flex-col gap-14 animate-fade-in [animation-delay:300ms]">
+        <section className="glass p-6 md:p-16 flex flex-col gap-14 animate-fade-in [animation-delay:300ms]">
             <div className="flex justify-center items-center min-h-[350px] w-full" ref={qrRef} id="qr-preview"></div>
             <div className="grid grid-cols-2 gap-5">
                 <button
