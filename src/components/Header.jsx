@@ -18,7 +18,7 @@ const Header = () => (
         </div>
 
         <h1 className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tightest mb-6 leading-none bg-gradient-to-r from-zinc-950 via-zinc-400 to-zinc-950 dark:from-white dark:via-zinc-500 dark:to-white bg-clip-text text-transparent animate-gradient">
-            Lumina QR
+            Free QR Generator
         </h1>
         <p className="max-w-2xl mx-auto text-zinc-500 dark:text-zinc-300 text-lg md:text-xl font-medium tracking-tight px-4">
             World-class QR generation for high-end digital architecture and brand storytelling.
