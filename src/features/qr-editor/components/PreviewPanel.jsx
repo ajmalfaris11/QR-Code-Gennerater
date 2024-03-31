@@ -7,25 +7,25 @@ const PreviewPanel = ({ qrRef, download, isDark }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
                 <button
                     onClick={() => download('png')}
-                    className={`font-black text-[10px] tracking-[0.3em] py-4 md:py-5 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl ${isDark ? 'bg-white text-black hover:bg-zinc-100 shadow-white/5' : 'bg-zinc-950 text-white hover:bg-zinc-800'}`}
+                    className={`font-black text-[10px] tracking-[0.3em] py-4 md:py-5 px-10 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl ${isDark ? 'bg-white text-black hover:bg-zinc-100 shadow-white/5' : 'bg-zinc-950 text-white hover:bg-zinc-800'}`}
                 >
                     DOWNLOAD PNG
                 </button>
                 <button
                     onClick={() => download('svg')}
-                    className={`bg-transparent font-black text-[10px] tracking-[0.3em] py-4 md:py-5 rounded-full transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 ${isDark ? 'text-white hover:bg-white/5' : 'text-zinc-950 hover:bg-black/5'}`}
+                    className={`bg-transparent font-black text-[10px] tracking-[0.3em] py-4 md:py-5 px-10 rounded-full transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 ${isDark ? 'text-white hover:bg-white/5' : 'text-zinc-950 hover:bg-black/5'}`}
                 >
                     DOWNLOAD SVG
                 </button>
                 <button
                     onClick={() => download('webp')}
-                    className={`bg-transparent font-black text-[10px] tracking-[0.3em] py-4 md:py-5 rounded-full transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 ${isDark ? 'text-white hover:bg-white/5' : 'text-zinc-950 hover:bg-black/5'}`}
+                    className={`bg-transparent font-black text-[10px] tracking-[0.3em] py-4 md:py-5 px-10 rounded-full transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 ${isDark ? 'text-white hover:bg-white/5' : 'text-zinc-950 hover:bg-black/5'}`}
                 >
                     DOWNLOAD WEBP
                 </button>
                 <button
                     onClick={() => download('jpeg')}
-                    className={`bg-transparent font-black text-[10px] tracking-[0.3em] py-4 md:py-5 rounded-full transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 ${isDark ? 'text-white hover:bg-white/5' : 'text-zinc-950 hover:bg-black/5'}`}
+                    className={`bg-transparent font-black text-[10px] tracking-[0.3em] py-4 md:py-5 px-10 rounded-full transition-all border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 ${isDark ? 'text-white hover:bg-white/5' : 'text-zinc-950 hover:bg-black/5'}`}
                 >
                     DOWNLOAD JPEG
                 </button>
