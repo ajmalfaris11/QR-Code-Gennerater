@@ -4,7 +4,7 @@ const PreviewPanel = ({ qrRef, download, isDark }) => {
     return (
         <section className="glass p-6 md:p-16 flex flex-col gap-10 md:gap-14 animate-fade-in [animation-delay:300ms]">
             <div className="flex justify-center items-center min-h-[300px] md:min-h-[350px] w-full" ref={qrRef} id="qr-preview"></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+            <div className="flex flex-col gap-4 md:gap-5">
                 <button
                     onClick={() => download('png')}
                     className={`font-black text-[10px] tracking-[0.3em] py-4 md:py-5 px-10 rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] shadow-xl ${isDark ? 'bg-white text-black hover:bg-zinc-100 shadow-white/5' : 'bg-zinc-950 text-white hover:bg-zinc-800'}`}

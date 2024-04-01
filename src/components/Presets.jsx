@@ -8,7 +8,7 @@ const themes = [
 ];
 
 const Presets = ({ activePreset, onSelect }) => (
-    <div className="flex justify-center gap-4 mb-12 flex-wrap animate-fade-in [animation-delay:100ms]">
+    <div className="flex flex-col items-center gap-4 mb-12 animate-fade-in [animation-delay:100ms]">
         {themes.map((theme) => (
             <button
                 key={theme.id}

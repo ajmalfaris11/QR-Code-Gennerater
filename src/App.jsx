@@ -140,13 +140,13 @@ const App = () => {
     return (
         <div className={`min-h-screen w-full transition-colors duration-1000 selection:bg-zinc-950 dark:selection:bg-white selection:text-white dark:selection:text-black ${isDark ? 'bg-black text-white dark' : 'bg-white text-zinc-950'}`}>
             <SpaceBackground />
-            <div className="max-w-6xl mx-auto px-4 md:px-8 py-12 md:py-24 relative z-10">
+            <div className="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-24 relative z-10">
                 <ThemeToggle isDark={isDark} onToggle={() => setIsDark(!isDark)} />
                 <Header />
                 <Presets activePreset={activePreset} onSelect={applyPreset} />
 
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr,450px] gap-16 items-start">
-                    <ConfigPanel 
+                    <ConfigPanel
                         isDark={isDark}
                         options={options}
                         handleChange={handleChange}
@@ -161,7 +161,7 @@ const App = () => {
                         setShowPicker={setShowPicker}
                     />
 
-                    <PreviewPanel 
+                    <PreviewPanel
                         qrRef={qrRef}
                         download={download}
                         isDark={isDark}
