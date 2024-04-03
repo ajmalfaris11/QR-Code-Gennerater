@@ -21,7 +21,7 @@ const Header = () => (
             QR Generator
         </h1>
         <p className="max-w-2xl mx-auto text-zinc-500 dark:text-zinc-300 text-lg md:text-xl font-medium tracking-tight px-4">
-            World-class QR generation for high-end digital architecture and brand storytelling.
+            Instant, high-resolution QR codes for URLs, social profiles, and branding. Completely free, no registration required, and designed for professional use.
         </p>
     </header>
 );
