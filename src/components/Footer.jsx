@@ -2,7 +2,7 @@ import React from 'react';
 import { FiGithub, FiTwitter, FiInstagram, FiLinkedin, FiGlobe } from 'react-icons/fi';
 
 const Footer = () => (
-    <footer className="max-w-6xl mx-auto px-8 py-12 mt-12 animate-fade-in [animation-delay:400ms] border-t border-black/[0.05] dark:border-white/[0.05]">
+    <footer className="max-w-7xl mx-auto px-8 py-12 mt-12 animate-fade-in [animation-delay:400ms] border-t border-black/[0.05] dark:border-white/[0.05]">
         <div className="flex flex-col md:flex-row justify-between items-center gap-10">
             <div className="flex flex-col gap-3 text-center md:text-left">
                 <span className="text-sm font-black tracking-[0.3em] text-zinc-950 dark:text-white uppercase">Generate QR</span>

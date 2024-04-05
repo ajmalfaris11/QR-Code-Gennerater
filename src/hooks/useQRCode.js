@@ -8,7 +8,7 @@ export const useQRCode = (options) => {
     useEffect(() => {
         const qrOptions = { 
             ...options, 
-            data: options.data || ' ',
+            data: options.data || 'https://unity11solutions.com',
             imageOptions: { ...options.imageOptions, hideBackgroundDots: true }
         };
 
